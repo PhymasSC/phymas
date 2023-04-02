@@ -1,6 +1,13 @@
 import Navbar from '@components/Navigation'
-import { createTheme, NextUIProvider, globalCss } from '@nextui-org/react'
+import {
+  createTheme,
+  NextUIProvider,
+  globalCss,
+  Spacer,
+} from '@nextui-org/react'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { useSSR } from '@nextui-org/react'
+import Footer from '@/components/Footer'
 
 interface MyAppProps {
   Component: React.ComponentType
@@ -23,26 +30,33 @@ const globalStyles = globalCss({
   body: {
     margin: 0,
     padding: 0,
-    fontFamily: 'Inter, sans-serif',
   },
 })
 
 const App = ({ Component, pageProps }: MyAppProps) => {
   globalStyles()
+  const { isBrowser } = useSSR()
+
   return (
-    <NextThemesProvider
-      defaultTheme='system'
-      attribute='class'
-      value={{
-        light: lightTheme.className,
-        dark: darkTheme.className,
-      }}
-    >
-      <NextUIProvider>
-        <Navbar />
-        <Component {...pageProps} />
-      </NextUIProvider>
-    </NextThemesProvider>
+    isBrowser && (
+      <>
+        <NextUIProvider>
+          <NextThemesProvider
+            defaultTheme='system'
+            attribute='class'
+            value={{
+              light: lightTheme.className,
+              dark: darkTheme.className,
+            }}
+          >
+            <Navbar />
+            <Spacer />
+            <Component {...pageProps} />
+            <Footer />
+          </NextThemesProvider>
+        </NextUIProvider>
+      </>
+    )
   )
 }
 
