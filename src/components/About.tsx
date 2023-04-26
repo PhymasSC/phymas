@@ -3,6 +3,7 @@ import { Text, Spacer, Row, Button, Avatar } from '@nextui-org/react'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
 import {
   faArrowCircleDown,
+  faDownload,
   faEnvelope,
   faLocationDot,
 } from '@fortawesome/free-solid-svg-icons'
@@ -107,13 +108,26 @@ const About = () => {
               <Button
                 size='xl'
                 shadow
-                bordered
+                ghost
                 icon={<FontAwesomeIcon icon={faEnvelope} />}
                 auto
                 as='a'
                 href='mailto:phymaslau@gmail.com'
               >
                 Hire me
+              </Button>
+              <Spacer x={1} />
+              <Button
+                size='xl'
+                light
+                iconRight={<FontAwesomeIcon icon={faDownload} />}
+                auto
+                color='secondary'
+                as='a'
+                href='/files/Lau_Sheng_Cher_Resume.pdf'
+                target='_blank'
+              >
+                View Resume{' '}
               </Button>
             </Row>
             <Spacer y={3} />

@@ -3,9 +3,10 @@ import ProjectCard from './ProjectCard'
 
 const projects = [
   {
-    title: 'Next UI',
+    title: 'Portfolio',
+    images: [],
     description:
-      'Next UI is a React component library that makes it easy to build beautiful websites and apps.',
+      'This is my portfolio website. It is built with Next.js and NextUI.',
     url: 'www.nextui.org',
     image: 'https://avatars.githubusercontent.com/u/86160567?s=200&v=4',
   },

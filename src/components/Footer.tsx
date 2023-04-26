@@ -1,4 +1,4 @@
-import { Container, Col, Row, Text, Spacer } from '@nextui-org/react'
+import { Container, Col, Row, Text, Spacer, Link } from '@nextui-org/react'
 import GitHub from './icons/Github'
 import LinkedIn from './icons/LinkedIn'
 import { useTheme } from '@nextui-org/react'
@@ -17,16 +17,16 @@ const Footer = () => {
         justify='center'
         css={{ marginTop: '1rem', marginBottom: '1rem' }}
       >
-        <a href='https://github.com/PhymasSC' target='_blank'>
+        <Link href='https://github.com/PhymasSC' target='_blank'>
           <GitHub width={30} height={30} color={isDark ? '#fff' : '#000'} />
-        </a>
+        </Link>
         <Spacer x={1} />
-        <a
+        <Link
           href='https://www.linkedin.com/in/sheng-cher-lau-8a3730245/'
           target='_blank'
         >
           <LinkedIn width={30} height={30} color={isDark ? '#fff' : '#000'} />
-        </a>
+        </Link>
       </Row>
       <Row justify='center'>
         <Text
@@ -37,25 +37,33 @@ const Footer = () => {
           }}
         >
           Website built with{' '}
-          <a href='https://nextjs.org' target='_blank'>
+          <Link href='https://nextjs.org' target='_blank' isExternal>
             Next.js
-          </a>
+          </Link>
           ,{' '}
-          <a href='https://nextui.org' target='_blank'>
+          <Link href='https://nextui.org' target='_blank' isExternal>
             NextUI
-          </a>
+          </Link>
           ,{' '}
-          <a href='https://www.framer.com/motion/' target='_blank'>
+          <Link
+            href='https://www.framer.com/motion/'
+            target='_blank'
+            isExternal
+          >
             Framer Motion
-          </a>{' '}
+          </Link>{' '}
           and{' '}
-          <a href='https://www.typescriptlang.org' target='_blank'>
+          <Link
+            href='https://www.typescriptlang.org'
+            target='_blank'
+            isExternal
+          >
             TypeScript
-          </a>
+          </Link>
           . Powered by{' '}
-          <a href='https://vercel.com' target='_blank'>
+          <Link href='https://vercel.com' target='_blank' isExternal>
             Vercel
-          </a>
+          </Link>
           . &copy; Lau Sheng Cher {year}
         </Text>
       </Row>
