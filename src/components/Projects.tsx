@@ -40,7 +40,6 @@ const Projects = () => {
           </Grid>
         ))}
       </Grid.Container>
-      );
     </>
   )
 }
