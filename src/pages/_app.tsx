@@ -1,13 +1,16 @@
 import Navbar from '@components/Navigation'
 import {
   createTheme,
+  useTheme,
   NextUIProvider,
-  globalCss,
   Spacer,
+  Container,
 } from '@nextui-org/react'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useSSR } from '@nextui-org/react'
 import Footer from '@/components/Footer'
+import './../styles/globals.css'
+import './../styles/Home.module.css'
 
 interface MyAppProps {
   Component: React.ComponentType
@@ -16,26 +19,28 @@ interface MyAppProps {
 
 const lightTheme = createTheme({
   type: 'light',
+  theme: {
+    colors: {
+      selection: 'hsl(200, 90%, 80%)',
+    },
+  },
 })
 
 const darkTheme = createTheme({
   type: 'dark',
-})
-
-const globalStyles = globalCss({
-  '*': {
-    boxSizing: 'border-box',
-    transition: 'background 0.25s ease-in-out',
-  },
-  body: {
-    margin: 0,
-    padding: 0,
+  theme: {
+    colors: {
+      // brand colors
+      background: '#111',
+      backgroundAlpha: 'rgba(17, 17, 17, 0.8)',
+      selection: 'hsl(200, 90%, 80%)',
+    },
   },
 })
 
 const App = ({ Component, pageProps }: MyAppProps) => {
-  globalStyles()
   const { isBrowser } = useSSR()
+  const { isDark, type } = useTheme()
 
   return (
     isBrowser && (
@@ -49,10 +54,12 @@ const App = ({ Component, pageProps }: MyAppProps) => {
               dark: darkTheme.className,
             }}
           >
-            <Navbar />
-            <Spacer />
-            <Component {...pageProps} />
-            <Footer />
+            <Container>
+              <Navbar />
+              <Spacer />
+              <Component {...pageProps} />
+              <Footer />
+            </Container>
           </NextThemesProvider>
         </NextUIProvider>
       </>

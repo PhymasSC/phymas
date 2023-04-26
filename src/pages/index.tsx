@@ -1,33 +1,38 @@
 import About from '@/components/About'
 import Contacts from '@/components/Contacts'
 import Projects from '@/components/Projects'
-import { Button, Container, Col, Text, Row } from '@nextui-org/react'
+import { Col, Text, Row } from '@nextui-org/react'
 
-const year = new Date().getFullYear()
-
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <Container md>
-        <Row>
-          <Col>
-            <Text h1>About me.</Text>
-            <About />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Text h1>Projects.</Text>
-            <Projects />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Text h1>Contact.</Text>
-            <Contacts />
-          </Col>
-        </Row>
-      </Container>
+      <Row className='h-screen' css={{ marginBottom: '5vh', height: '85vh' }}>
+        <Col
+          id='about'
+          css={{
+            height: 'calc(100vh - 76px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <About />
+        </Col>
+      </Row>
+      <Row>
+        <Col id='projects'>
+          <Text h1>Projects.</Text>
+          <Projects />
+        </Col>
+      </Row>
+      <Row>
+        <Col id='contact'>
+          <Text h1>Contact.</Text>
+          <Contacts />
+        </Col>
+      </Row>
     </>
   )
 }
+
+export default Home

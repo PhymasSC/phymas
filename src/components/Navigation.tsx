@@ -1,7 +1,6 @@
 import Phymas from './icons/Phymas'
 import {
   useTheme,
-  Button,
   Dropdown,
   Text,
   Navbar,
@@ -29,7 +28,7 @@ const Navigation = () => {
         <Navbar.Brand>
           <Navbar.Toggle showIn='xs' />
           <Spacer></Spacer>
-          <Phymas size={30} color={isDark ? '#FFF' : '#000'} />
+          <Phymas size={30} color={isDark ? 'white' : 'black'} />
           <Text
             b
             css={{
@@ -42,9 +41,9 @@ const Navigation = () => {
         </Navbar.Brand>
 
         <Navbar.Content activeColor='default' variant='highlight' hideIn='xs'>
-          <Navbar.Link href='#'>About me</Navbar.Link>
-          <Navbar.Link href='#'>Projects</Navbar.Link>
-          <Navbar.Link href='#'>Contact</Navbar.Link>
+          <Navbar.Link href='#about'>About me</Navbar.Link>
+          <Navbar.Link href='#projects'>Projects</Navbar.Link>
+          <Navbar.Link href='#contact'>Contact</Navbar.Link>
         </Navbar.Content>
 
         <Navbar.Content
