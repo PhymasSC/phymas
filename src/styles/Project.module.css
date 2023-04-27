@@ -1,0 +1,33 @@
+.video {
+  width: 50%;
+  height: 50%;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.video::before {
+  content: '';
+  display: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(68, 68, 188, 0), #4444bc);
+  z-index: 2;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/videos/ShootEmUpShowcase.mp4') center center no-repeat;
+}
+
+.videoContainer video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}

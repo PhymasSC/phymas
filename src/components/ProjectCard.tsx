@@ -6,12 +6,13 @@ import Link from 'next/link'
 interface Props {
   title: string
   description: string
-  url: string
+  urlSourceCode: string
+  urlDeployedVersion: string
   image?: string
 }
 
 const ProjectCard = (props: Props) => {
-  const { title, description, url, image } = props
+  const { title, description, urlSourceCode, urlDeployedVersion, image } = props
 
   return (
     <Card css={{ p: '$6', width: '400px' }}>
@@ -30,11 +31,11 @@ const ProjectCard = (props: Props) => {
       </Card.Body>
       <Card.Footer>
         <Row>
-          <Link color='primary' target='_blank' href={url}>
+          <Link color='primary' target='_blank' href={urlSourceCode}>
             Visit source code on GitHub{' '}
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} /> .
           </Link>
-          <Link color='primary' target='_blank' href={url}>
+          <Link color='primary' target='_blank' href={urlDeployedVersion}>
             Visit deployed version{' '}
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} /> .
           </Link>

@@ -1,7 +1,8 @@
-import About from '@/components/About'
+import Header from '@/components/Header'
 import Projects from '@/components/Projects'
+import About from '@/components/About'
 import { Col, Text, Row } from '@nextui-org/react'
-
+import AnimatedText from '@/components/AnimatedText'
 const Home = () => {
   return (
     <>
@@ -15,8 +16,11 @@ const Home = () => {
             justifyContent: 'center',
           }}
         >
-          <About />
+          <Header />
         </Col>
+      </Row>
+      <Row>
+        <About />
       </Row>
       <Row>
         <Col id='projects'>
@@ -24,6 +28,20 @@ const Home = () => {
           <Projects />
         </Col>
       </Row>
+      <AnimatedText
+        size='$2xl'
+        weight='medium'
+        animateScale={1.1}
+        css={{
+          textAlign: 'center',
+          textJustify: 'inter-word',
+          lineHeight: '1.5',
+        }}
+      >
+        I'm a 23 year old student from Malaysia. I'm currently studying computer
+        science at the University of Malaysia Terengganu in Terengganu,
+        Malaysia. I'm interested in web development and software development.
+      </AnimatedText>
     </>
   )
 }

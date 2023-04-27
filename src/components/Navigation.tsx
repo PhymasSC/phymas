@@ -25,20 +25,22 @@ const Navigation = () => {
   return (
     <>
       <Navbar isBordered variant='floating'>
-        <Navbar.Brand>
-          <Navbar.Toggle showIn='xs' />
-          <Spacer></Spacer>
-          <Phymas size={30} color={isDark ? 'white' : 'black'} />
-          <Text
-            b
-            css={{
-              paddingLeft: '10px',
-            }}
-            color='inherit'
-          >
-            Phymas
-          </Text>
-        </Navbar.Brand>
+        <Link href='/' color='text'>
+          <Navbar.Brand>
+            <Navbar.Toggle showIn='xs' />
+            <Spacer></Spacer>
+            <Phymas size={30} color={isDark ? 'white' : 'black'} />
+            <Text
+              b
+              css={{
+                paddingLeft: '10px',
+              }}
+              color='inherit'
+            >
+              Phymas
+            </Text>
+          </Navbar.Brand>
+        </Link>
 
         <Navbar.Content activeColor='default' variant='highlight' hideIn='xs'>
           <Navbar.Link href='#about'>About me</Navbar.Link>

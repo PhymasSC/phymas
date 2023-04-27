@@ -1,142 +1,46 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Text, Spacer, Row, Button, Avatar } from '@nextui-org/react'
-import { motion, AnimatePresence, Variants } from 'framer-motion'
-import {
-  faArrowCircleDown,
-  faDownload,
-  faEnvelope,
-  faLocationDot,
-} from '@fortawesome/free-solid-svg-icons'
-import Phymas from './icons/Phymas'
+import { Text, Grid, Spacer } from '@nextui-org/react'
+import { motion, useTransform, useScroll } from 'framer-motion'
+import Image from 'next/image'
+import AnimatedText from './AnimatedText'
 
 const About = () => {
-  const parentVariant: Variants = {
-    initial: { opacity: 0 },
-    animate: {
-      opacity: 1,
-      transition: { staggerChildren: 0.4 },
-    },
-  }
+  const { scrollY } = useScroll()
 
-  const childrenVariant: Variants = {
-    initial: { opacity: 0, y: 100 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, type: 'spring' },
-    },
-  }
-
+  const scale = useTransform(scrollY, [0, window.innerHeight], [1.25, 1])
   return (
     <>
-      <AnimatePresence>
-        <motion.div
-          initial='initial'
-          animate='animate'
-          variants={parentVariant}
-        >
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.5 }}
-            variants={childrenVariant}
-          >
-            <Text
-              h3
+      <motion.div style={{ scale }}>
+        <Grid.Container wrap='wrap'>
+          <Grid justify='center' alignItems='center' direction='column' xs={12}>
+            <Text h1>About me.</Text>
+            <Image
+              src='/img/my_photo.webp'
+              width={200}
+              height={200}
+              alt='A photo of Lau Sheng Cher'
+              style={{ borderRadius: '50%' }}
+            />
+          </Grid>
+          <Spacer y={3} />
+          <Grid alignItems='center'>
+            <AnimatedText
+              size='$2xl'
+              weight='medium'
+              animateScale={1.1}
               css={{
                 textAlign: 'center',
-                fontSize: '10rem',
-                textGradient: `45deg, $accents8 -20%, $accents9 100%`,
-                fontWeight: '$extrabold',
-                '@media (max-width: 1440px)': {
-                  fontSize: '8rem',
-                },
-
-                '@media (max-width: 1024px)': {
-                  fontSize: '6rem',
-                },
-
-                '@media(max-width: 960px )': {
-                  fontSize: '5rem',
-                },
-
-                '@media (max-width: 768px)': {
-                  fontSize: '4rem',
-                },
-
-                '@media (max-width: 480px)': {
-                  fontSize: '3rem',
-                },
-
-                '@media (max-width: 380px)': {
-                  fontSize: '2rem',
-                },
+                textJustify: 'inter-word',
+                lineHeight: '1.5',
               }}
             >
-              Lau Sheng Cher
-            </Text>
-          </motion.div>
-          <motion.div variants={childrenVariant}>
-            <Text h2 css={{ textAlign: 'center' }}>
-              Full-stack Web Developement Student 👨🏻‍💻
-            </Text>
-          </motion.div>
-          <motion.div variants={childrenVariant}>
-            <Text h3 weight='light' css={{ textAlign: 'center' }}>
-              I am currently seeking for an internship
-            </Text>
-          </motion.div>
-          <motion.div variants={childrenVariant}>
-            <Row justify='center' align='center'>
-              <FontAwesomeIcon
-                rotate={90}
-                icon={faLocationDot}
-                size='lg'
-                color='rgb(255,59,48)'
-                style={{
-                  marginTop: '-10px',
-                }}
-              />
-              <Spacer x={0.5} />
-              <Text h4 weight='light'>
-                Penang, Malaysia
-              </Text>
-            </Row>
-          </motion.div>
-          <Spacer y={2} />
-          <motion.div variants={childrenVariant}>
-            <Row justify='center' align='center'>
-              <Button
-                size='xl'
-                shadow
-                ghost
-                icon={<FontAwesomeIcon icon={faEnvelope} />}
-                auto
-                as='a'
-                href='mailto:phymaslau@gmail.com'
-              >
-                Hire me
-              </Button>
-              <Spacer x={1} />
-              <Button
-                size='xl'
-                light
-                iconRight={<FontAwesomeIcon icon={faDownload} />}
-                auto
-                color='secondary'
-                as='a'
-                href='/files/Lau_Sheng_Cher_Resume.pdf'
-                target='_blank'
-              >
-                View Resume{' '}
-              </Button>
-            </Row>
-            <Spacer y={3} />
-          </motion.div>
-          <Row justify='center' align='center'>
-            <FontAwesomeIcon icon={faArrowCircleDown} bounce />
-          </Row>
-        </motion.div>
-      </AnimatePresence>
+              I'm a 23 year old student from Malaysia. I'm currently studying
+              computer science at the University of Malaysia Terengganu in
+              Terengganu, Malaysia. I'm interested in web development and
+              software development.
+            </AnimatedText>
+          </Grid>
+        </Grid.Container>
+      </motion.div>
     </>
   )
 }

@@ -2,7 +2,6 @@ import { Container, Col, Row, Text, Spacer, Link } from '@nextui-org/react'
 import GitHub from './icons/Github'
 import LinkedIn from './icons/LinkedIn'
 import { useTheme } from '@nextui-org/react'
-import { motion } from 'framer-motion'
 const year = new Date().getFullYear()
 
 const Footer = () => {
