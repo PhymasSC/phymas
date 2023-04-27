@@ -33,9 +33,9 @@ const About = () => {
                 lineHeight: '1.5',
               }}
             >
-              I'm a 23 year old student from Malaysia. I'm currently studying
-              computer science at the University of Malaysia Terengganu in
-              Terengganu, Malaysia. I'm interested in web development and
+              I&#39;m a 23 year old student from Malaysia. I&#39;m currently
+              studying computer science at the University of Malaysia Terengganu
+              in Terengganu, Malaysia. I&#39;m interested in web development and
               software development.
             </AnimatedText>
           </Grid>
