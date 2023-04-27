@@ -28,20 +28,6 @@ const Home = () => {
           <Projects />
         </Col>
       </Row>
-      <AnimatedText
-        size='$2xl'
-        weight='medium'
-        animateScale={1.1}
-        css={{
-          textAlign: 'center',
-          textJustify: 'inter-word',
-          lineHeight: '1.5',
-        }}
-      >
-        I'm a 23 year old student from Malaysia. I'm currently studying computer
-        science at the University of Malaysia Terengganu in Terengganu,
-        Malaysia. I'm interested in web development and software development.
-      </AnimatedText>
     </>
   )
 }
