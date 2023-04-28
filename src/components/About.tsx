@@ -1,8 +1,7 @@
-import { Text, Grid, Spacer, Container } from '@nextui-org/react'
+import { Text, Grid, Spacer } from '@nextui-org/react'
 import { motion, useTransform, useScroll } from 'framer-motion'
 import Image from 'next/image'
 import AnimatedText from './AnimatedText'
-import ParallaxText from './ParallaxText'
 
 const About = () => {
   const { scrollY } = useScroll()
