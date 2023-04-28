@@ -35,7 +35,7 @@ const About = () => {
           variants={childrenVariant}
         >
           <Text
-            h3
+            h1
             css={{
               textAlign: 'center',
               fontSize: '10rem',
