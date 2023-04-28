@@ -2,6 +2,7 @@ import { Text, Grid, Spacer } from '@nextui-org/react'
 import { motion, useTransform, useScroll } from 'framer-motion'
 import Image from 'next/image'
 import AnimatedText from './AnimatedText'
+import ParallaxText from './ParallaxText'
 
 const About = () => {
   const { scrollY } = useScroll()
@@ -26,7 +27,6 @@ const About = () => {
             <AnimatedText
               size='$2xl'
               weight='medium'
-              animateScale={1.1}
               css={{
                 textAlign: 'center',
                 textJustify: 'inter-word',

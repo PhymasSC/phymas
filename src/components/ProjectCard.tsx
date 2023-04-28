@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { Card, Grid, Row, Text } from '@nextui-org/react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Props {
   title: string
@@ -17,7 +18,13 @@ const ProjectCard = (props: Props) => {
   return (
     <Card css={{ p: '$6', width: '400px' }}>
       <Card.Header>
-        <img alt='nextui logo' src={image} width='34px' height='34px' />
+        <Image
+          alt='nextui logo'
+          src={image || ''}
+          width={34}
+          height={34}
+          style={{ borderRadius: '50%' }}
+        />
         <Grid.Container css={{ pl: '$6' }}>
           <Grid xs={12}>
             <Text h4 css={{ lineHeight: '$xs' }}>

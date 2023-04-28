@@ -1,6 +1,6 @@
 import { Text, TextProps } from '@nextui-org/react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { easeIn, m, motion, useScroll, useTransform } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
 
 type AnimatedTextProps = {
   children: string
@@ -8,13 +8,22 @@ type AnimatedTextProps = {
 } & TextProps
 
 const AnimatedText = (props: AnimatedTextProps) => {
-  const { scrollY } = useScroll()
+  const ref = useRef(null)
+  const { scrollY, scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'start start'],
+  })
   const [words, setWords] = useState<string[]>([])
   const [colorIndex, setColorIndex] = useState(0)
   const scale = useTransform(
-    scrollY,
+    scrollYProgress,
     [0, window.innerHeight],
     [props.animateScale || 1.25, 1],
+  )
+  const textPosition = useTransform(
+    scrollYProgress,
+    [0, 1 / 2],
+    [0, words.length],
   )
 
   useEffect(() => {
@@ -23,26 +32,22 @@ const AnimatedText = (props: AnimatedTextProps) => {
   }, [props.children])
 
   scrollY.on('change', () => {
-    const scrollPercentage = scrollY.get() / window.innerHeight
-    const newIndex = Math.floor(scrollPercentage * words.length * 3)
-
+    const newIndex = Math.floor(textPosition.get())
     if (newIndex !== colorIndex) {
       setColorIndex(newIndex)
     }
   })
 
   return (
-    <motion.text style={{ scale }}>
+    <motion.text ref={ref} style={{ scale }}>
       <Text {...props}>
         {
           // separate each word into a span
-          props.children.split(' ').map((word, index) => {
+          words.map((word, index) => {
             return (
               <span
                 key={index}
-                className={`${
-                  index === colorIndex % words.length ? 'text-blue-500' : ''
-                }`}
+                className={`${index === colorIndex ? 'text-blue-500' : ''}`}
               >
                 {word}{' '}
               </span>

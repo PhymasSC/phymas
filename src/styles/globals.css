@@ -4,6 +4,10 @@ Comment out this to prevent tailwind preflight overrided next-ui
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  * {
+  }
+}
 @layer components {
   .bg-primary {
     height: 100vh;
