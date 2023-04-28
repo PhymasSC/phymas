@@ -6,6 +6,7 @@ Comment out this to prevent tailwind preflight overrided next-ui
 
 @layer utilities {
   * {
+    scroll-behavior: smooth;
   }
 }
 @layer components {
