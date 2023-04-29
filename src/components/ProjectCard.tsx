@@ -12,7 +12,7 @@ interface Props {
   description: string
   urlSourceCode?: string
   urlDeployedVersion?: string
-  image?: string
+  image?: string | React.ReactNode
   timeline: string
   technologies: string[]
 }
@@ -37,7 +37,9 @@ const ProjectCard = (props: Props) => {
         css={{ p: '$6', width: '100%' }}
       >
         <Card.Header>
-          {image?.startsWith('emoji-') ? (
+          {image?.toLocaleString() === '[object Object]' ? (
+            image
+          ) : image?.toLocaleString()?.startsWith('emoji-') ? (
             <Text
               css={{
                 fontSize: '$6',
@@ -45,10 +47,15 @@ const ProjectCard = (props: Props) => {
                 marginRight: '$4',
               }}
             >
-              {image?.replace('emoji-', '')}
+              {image?.toLocaleString().replace('emoji-', '')}
             </Text>
           ) : (
-            <Image alt='nextui logo' src={image || ''} width={50} height={50} />
+            <Image
+              alt='nextui logo'
+              src={image?.toLocaleString() || ''}
+              width={50}
+              height={50}
+            />
           )}
           <Grid.Container
             direction='column'

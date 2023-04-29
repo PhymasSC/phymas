@@ -1,4 +1,5 @@
 import { Grid } from '@nextui-org/react'
+import Phymas from './icons/Phymas'
 import ProjectCard from './ProjectCard'
 
 const projects = [
@@ -8,7 +9,7 @@ const projects = [
       'This is my portfolio website. It is built with Next.js and NextUI.',
     urlSourceCode: 'https://github.com/PhymasSC/phymas',
     urlDeployedVersion: 'https://www.phymas.me/',
-    image: '/favicon-32x32.png',
+    image: <Phymas size={30} />,
     technologies: ['Next.js', 'NextUI', 'Framer Motion', 'TypeScript'],
     timeline: 'April 2022 - Current',
   },

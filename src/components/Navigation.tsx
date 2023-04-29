@@ -18,7 +18,7 @@ import {
 
 const Navigation = () => {
   const { theme, setTheme } = useNextTheme()
-  const { isDark, type } = useTheme()
+  const { isDark } = useTheme()
 
   const collapseItems = ['About me', 'Projects', 'Contact']
 
@@ -29,7 +29,7 @@ const Navigation = () => {
           <Navbar.Brand>
             <Navbar.Toggle showIn='xs' />
             <Spacer></Spacer>
-            <Phymas size={30} color={isDark ? 'white' : 'black'} />
+            <Phymas size={30} />
             <Text
               b
               css={{
