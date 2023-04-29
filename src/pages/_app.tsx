@@ -76,6 +76,27 @@ const App = ({ Component, pageProps }: MyAppProps) => {
             Meet Lau Sheng Cher, a passionate computer science student seeking an internship. With impressive projects showcasing his potential as a full-stack web developer, connect with this rising talent in tech today. Browse Lau Sheng Cher's portfolio and discover how he can add value to your organization."
           />
           <meta property='twitter:image' content='/img/og_img.png' />
+
+          <link
+            rel='apple-touch-icon'
+            sizes='180x180'
+            href='/apple-touch-icon.png'
+          />
+          <link
+            rel='icon'
+            type='image/png'
+            sizes='32x32'
+            href='/favicon-32x32.png'
+          />
+          <link
+            rel='icon'
+            type='image/png'
+            sizes='16x16'
+            href='/favicon-16x16.png'
+          />
+          <link rel='manifest' href='/site.webmanifest' />
+          <meta name='msapplication-TileColor' content='#0072F5' />
+          <meta name='theme-color' content='#0072F5'></meta>
         </Head>
         <NextUIProvider>
           <NextThemesProvider
