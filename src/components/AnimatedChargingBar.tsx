@@ -1,5 +1,5 @@
 import { Container, Row, Tooltip } from '@nextui-org/react'
-import { motion, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface AnimatedChargingBarProps {
   level: number

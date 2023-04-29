@@ -72,16 +72,17 @@ const Skills = () => {
                     Object.keys(Languages[language]).length
                   return (
                     <Grid.Container
+                      key={index}
                       justify='center'
                       alignItems='center'
                       css={{ marginBottom: '$md' }}
                     >
-                      <Grid key={index} xs={5} alignItems='center'>
+                      <Grid xs={5} alignItems='center'>
                         <Text weight='semibold' css={{ lineHeight: '$xs' }}>
                           {language.replaceAll('_', ' ')}
                         </Text>
                       </Grid>
-                      <Grid key={index} xs={6} alignItems='center'>
+                      <Grid xs={6} alignItems='center'>
                         <AnimatedChargingBar
                           level={level}
                           levelInText={`Overall: ${level}`}
