@@ -1,7 +1,6 @@
 import { Container, Text } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
-import style from './../../styles/Project.module.css'
 
 const Project = () => {
   const router = useRouter()
@@ -32,14 +31,7 @@ const Project = () => {
             }
           </Text>
         </motion.div>
-        <motion.video autoPlay loop className={style.video}>
-          <source src='/videos/ShootEmUpShowcase.mp4' type='video/mp4' />
-        </motion.video>
       </Container>
-
-      <div className={style.videoContainer}>
-        <video src='/videos/ShootEmUpShowcase.mp4' controls></video>
-      </div>
     </>
   )
 }
