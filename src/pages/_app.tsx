@@ -1,7 +1,6 @@
 import Navbar from '@components/Navigation'
 import {
   createTheme,
-  useTheme,
   NextUIProvider,
   Spacer,
   Container,
@@ -39,7 +38,6 @@ const darkTheme = createTheme({
 
 const App = ({ Component, pageProps }: MyAppProps) => {
   const { isBrowser } = useSSR()
-  const { isDark, type } = useTheme()
 
   return (
     isBrowser && (

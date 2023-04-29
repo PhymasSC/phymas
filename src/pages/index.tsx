@@ -3,10 +3,16 @@ import Projects from '@/components/Projects'
 import About from '@/components/About'
 import { Col, Text, Grid } from '@nextui-org/react'
 import Skills from '@/components/Skills'
+import Head from 'next/head'
 
 const Home = () => {
   return (
     <>
+      <Head>
+        <title>Phymas</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+        <meta property='og:image' content='https://www.phymas.me/api/og' />
+      </Head>
       <Grid.Container md>
         <Grid>
           <Col

@@ -24,7 +24,6 @@ class MyDocument extends Document {
       <Html lang='en'>
         <Head>
           {CssBaseline.flush()}
-          <title>Phymas</title>
           <meta name='title' content='Phymas' />
           <meta
             name='description'
