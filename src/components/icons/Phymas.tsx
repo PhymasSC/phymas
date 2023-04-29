@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 
 type Props = {
   size?: number
+  color: string
 }
 
 const icon = {
@@ -22,8 +23,8 @@ const Phymas = (props: Props) => (
     xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 375 374.999991'
     className='logo'
-    color='inherit'
-    stroke='inherit'
+    color={props.color}
+    stroke={props.color}
     fill='none'
     strokeWidth='20'
     strokeLinejoin='round'

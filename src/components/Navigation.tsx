@@ -29,7 +29,7 @@ const Navigation = () => {
           <Navbar.Brand>
             <Navbar.Toggle showIn='xs' />
             <Spacer></Spacer>
-            <Phymas size={30} />
+            <Phymas size={30} color={isDark ? '#FFF' : '#000'} />
             <Text
               b
               css={{
