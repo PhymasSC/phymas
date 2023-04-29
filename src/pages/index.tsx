@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import Projects from '@/components/Projects'
 import About from '@/components/About'
 import { Col, Text, Row, Container } from '@nextui-org/react'
+import Skills from '@/components/Skills'
 
 const Home = () => {
   return (
@@ -21,6 +22,9 @@ const Home = () => {
         </Row>
         <Row>
           <About />
+        </Row>
+        <Row>
+          <Skills />
         </Row>
         <Row>
           <Col id='projects'>

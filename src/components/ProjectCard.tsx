@@ -1,5 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import {
+  faArrowUpRightFromSquare,
+  faLock,
+} from '@fortawesome/free-solid-svg-icons'
 import { Badge, Button, Card, Grid, Row, Spacer, Text } from '@nextui-org/react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,7 +10,7 @@ import Image from 'next/image'
 interface Props {
   title: string
   description: string
-  urlSourceCode: string
+  urlSourceCode?: string
   urlDeployedVersion?: string
   image?: string
   timeline: string
@@ -45,13 +48,7 @@ const ProjectCard = (props: Props) => {
               {image?.replace('emoji-', '')}
             </Text>
           ) : (
-            <Image
-              alt='nextui logo'
-              src={image || ''}
-              width={50}
-              height={50}
-              style={{ borderRadius: '50%' }}
-            />
+            <Image alt='nextui logo' src={image || ''} width={50} height={50} />
           )}
           <Grid.Container
             direction='column'
@@ -98,23 +95,39 @@ const ProjectCard = (props: Props) => {
         </Card.Body>
         <Card.Footer>
           <Row>
-            <Link
-              onClick={e => {
-                e.stopPropagation()
-              }}
-              color='primary'
-              target='_blank'
-              href={urlSourceCode}
-            >
+            {urlSourceCode ? (
+              <Link
+                onClick={e => {
+                  e.stopPropagation()
+                }}
+                color='primary'
+                target='_blank'
+                href={urlSourceCode}
+              >
+                <Button
+                  iconRight={
+                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                  }
+                  auto
+                  ghost
+                  rounded
+                >
+                  Visit source code on GitHub{' '}
+                </Button>
+              </Link>
+            ) : (
               <Button
-                iconRight={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
+                icon={<FontAwesomeIcon icon={faLock} />}
                 auto
+                color='error'
                 ghost
                 rounded
+                as='a'
+                href={`mailto:phymaslau@gmail.com?subject=Request for source code for ${title}`}
               >
-                Visit source code on GitHub{' '}
+                Request for source code
               </Button>
-            </Link>
+            )}
             {urlDeployedVersion && (
               <>
                 <Spacer x={1} />

@@ -18,7 +18,7 @@ const projects = [
       'UMT Fellow is a platform for students to find and apply for fellowships.',
     urlDeployedVersion: 'https://www.umtfellow.social',
     urlSourceCode: 'https://github.com/PhymasSC/umt-fellow-web',
-    image: '/favicon-32x32.png',
+    image: '/img/umt_fellow_logo.png',
     technologies: [
       'Next.js',
       'Mantine UI',
@@ -63,8 +63,7 @@ const projects = [
   {
     title: 'Online Banking System',
     description: 'This is an online banking system built with Java Swing.',
-    urlSourceCode: 'https://github.com/PhymasSC/umt-fellow-web',
-    image: '/favicon-32x32.png',
+    image: '/img/obs_logo.png',
     technologies: ['Java SE', 'Java Swing', 'Google Mail API', 'Figma'],
     timeline: 'May 2021 - July 2021',
   },

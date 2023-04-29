@@ -106,7 +106,7 @@ const About = () => {
               icon={<FontAwesomeIcon icon={faEnvelope} />}
               auto
               as='a'
-              href='mailto:phymaslau@gmail.com'
+              href='mailto:phymaslau@gmail.com?subject=Job Offer for [Job Type] Intern Position at [Company Name]'
             >
               Hire me
             </Button>
