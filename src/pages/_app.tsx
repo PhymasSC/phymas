@@ -62,7 +62,8 @@ const App = ({ Component, pageProps }: MyAppProps) => {
           <meta property='og:title' content='Phymas' />
           <meta
             property='og:description'
-            content="Meet Lau Sheng Cher, an inquisitive computer science student and aspiring full-stack web developer seeking an internship opportunity. With a strong passion for programming and technology, Lau Sheng Cher brings fresh insights and a creative approach to problem-solving. Explore Lau Sheng Cher's impressive portfolio, showcasing innovative projects that demonstrate his potential as a valuable addition to your firm. Don't miss out on the opportunity to connect with this rising talent in the field of computer science. Browse Lau Sheng Cher's portfolio today and get in touch to start a conversation about how Lau Sheng Cher can contribute to your organization."
+            content="
+        Meet Lau Sheng Cher, a passionate computer science student seeking an internship. With impressive projects showcasing his potential as a full-stack web developer, connect with this rising talent in tech today. Browse Lau Sheng Cher's portfolio and discover how he can add value to your organization."
           />
           <meta property='og:image' content='https://www.phymas.me/api/og' />
 
@@ -71,7 +72,8 @@ const App = ({ Component, pageProps }: MyAppProps) => {
           <meta property='twitter:title' content='Phymas' />
           <meta
             property='twitter:description'
-            content="Meet Lau Sheng Cher, an inquisitive comsputer science student and aspiring full-stack web developer seeking an internship opportunity. With a strong passion for programming and technology, Lau Sheng Cher brings fresh insights and a creative approach to problem-solving. Explore Lau Sheng Cher's impressive portfolio, showcasing innovative projects that demonstrate his potential as a valuable addition to your firm. Don't miss out on the opportunity to connect with this rising talent in the field of computer science. Browse Lau Sheng Cher's portfolio today and get in touch to start a conversation about how Lau Sheng Cher can contribute to your organization."
+            content="
+            Meet Lau Sheng Cher, a passionate computer science student seeking an internship. With impressive projects showcasing his potential as a full-stack web developer, connect with this rising talent in tech today. Browse Lau Sheng Cher's portfolio and discover how he can add value to your organization."
           />
           <meta property='twitter:image' content='/img/og_img.png' />
         </Head>
