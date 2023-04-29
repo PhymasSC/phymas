@@ -33,7 +33,8 @@ const AnimatedCard = ({ children }: { children: any }) => {
         display: 'flex',
         placeItems: 'center',
         placeContent: 'center',
-        perspective: 400,
+        width: '100%',
+        perspective: '50rem',
       }}
       onMouseMove={handleMouse}
       onMouseLeave={handleMouseLeave}
@@ -43,6 +44,7 @@ const AnimatedCard = ({ children }: { children: any }) => {
         style={{
           rotateX: rotateX,
           rotateY: rotateY,
+          width: '100%',
         }}
       >
         {children}

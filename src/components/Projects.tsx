@@ -80,9 +80,27 @@ const projects = [
 const Projects = () => {
   return (
     <>
-      <Grid.Container gap={3} justify='center'>
+      <Grid.Container
+        gap={3}
+        justify='center'
+        wrap='wrap'
+        css={{
+          '@media only screen and (max-width: 600px)': {
+            width: '100vc',
+            padding: '0',
+          },
+        }}
+      >
         {projects.map((project, index) => (
-          <Grid xs={12} key={index}>
+          <Grid
+            xs={12}
+            key={index}
+            css={{
+              '@media only screen and (max-width: 600px)': {
+                width: '100%',
+              },
+            }}
+          >
             <ProjectCard
               title={project.title}
               description={project.description}

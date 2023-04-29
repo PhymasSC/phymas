@@ -1,10 +1,17 @@
 import { faExternalLink, faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card, Col, Row, Button, Text, Link } from '@nextui-org/react'
+import Image from 'next/image'
 
 const SkillCard = () => {
   return (
-    <Card variant='bordered'>
+    <Card
+      variant='bordered'
+      css={{
+        width: '100%',
+        minHeight: '300px',
+      }}
+    >
       <Card.Header
         css={{
           position: 'absolute',
@@ -22,10 +29,18 @@ const SkillCard = () => {
         </Col>
       </Card.Header>
       <Card.Body css={{ p: 0 }}>
-        <Card.Image
+        <Image
           src='/img/bg.png'
-          objectFit='cover'
+          alt='Picture of the author'
+          height={300}
+          width={800}
+          style={{ objectFit: 'cover' }}
+        ></Image>
+        {/* <Card.Image
+          src='/img/bg.png'
           css={{
+            imageFit: 'cover',
+            position: 'relative',
             WebkitUserDrag: 'none',
             WebkitUserSelect: 'none',
             userSelect: 'none',
@@ -35,7 +50,7 @@ const SkillCard = () => {
               transform: 'scale(1.1)',
             },
           }}
-        ></Card.Image>
+        /> */}
       </Card.Body>
       <Card.Footer
         isBlurred

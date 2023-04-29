@@ -3,7 +3,16 @@ import {
   faArrowUpRightFromSquare,
   faLock,
 } from '@fortawesome/free-solid-svg-icons'
-import { Badge, Button, Card, Grid, Row, Spacer, Text } from '@nextui-org/react'
+import {
+  Badge,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Row,
+  Spacer,
+  Text,
+} from '@nextui-org/react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -56,16 +65,25 @@ const ProjectCard = (props: Props) => {
             css={{ pl: '$6' }}
           >
             <Grid xs={12}>
-              <Text h1 size='$xl' css={{ lineHeight: '0' }}>
+              <Text
+                h1
+                size='$xl'
+                css={{
+                  lineHeight: '$xs',
+                }}
+              >
                 {title}
               </Text>
             </Grid>
+
             <Grid xs={12}>
               <Text
                 color='gray'
                 size='$xs'
                 weight='semibold'
-                css={{ lineHeight: '0', marginTop: '$md' }}
+                css={{
+                  lineHeight: '$xs',
+                }}
               >
                 {timeline}
               </Text>
@@ -80,57 +98,60 @@ const ProjectCard = (props: Props) => {
             <br />
             Technology used:
           </Text>
-          <Row>
-            {technologies.map((technology, index) => (
-              <Badge
-                key={index}
-                color='primary'
-                variant='flat'
-                css={{ fontSize: '$xs' }}
-              >
-                {technology}
-              </Badge>
-            ))}
-          </Row>
+          <Grid.Container>
+            <Grid>
+              {technologies.map((technology, index) => (
+                <Badge
+                  key={index}
+                  color='primary'
+                  variant='flat'
+                  css={{ fontSize: '$xs' }}
+                >
+                  {technology}
+                </Badge>
+              ))}
+            </Grid>
+          </Grid.Container>
         </Card.Body>
         <Card.Footer>
-          <Row>
-            {urlSourceCode ? (
-              <Link
-                onClick={e => {
-                  e.stopPropagation()
-                }}
-                color='primary'
-                target='_blank'
-                href={urlSourceCode}
-              >
+          <Grid.Container gap={1}>
+            <Grid>
+              {urlSourceCode ? (
+                <Link
+                  onClick={e => {
+                    e.stopPropagation()
+                  }}
+                  color='primary'
+                  target='_blank'
+                  href={urlSourceCode}
+                >
+                  <Button
+                    iconRight={
+                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    }
+                    auto
+                    ghost
+                    rounded
+                  >
+                    Source code{' '}
+                  </Button>
+                </Link>
+              ) : (
                 <Button
-                  iconRight={
-                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                  }
+                  icon={<FontAwesomeIcon icon={faLock} />}
                   auto
+                  color='error'
                   ghost
                   rounded
+                  as='a'
+                  href={`mailto:phymaslau@gmail.com?subject=Request for source code for ${title}`}
                 >
-                  Visit source code on GitHub{' '}
+                  Request for source code
                 </Button>
-              </Link>
-            ) : (
-              <Button
-                icon={<FontAwesomeIcon icon={faLock} />}
-                auto
-                color='error'
-                ghost
-                rounded
-                as='a'
-                href={`mailto:phymaslau@gmail.com?subject=Request for source code for ${title}`}
-              >
-                Request for source code
-              </Button>
-            )}
+              )}
+            </Grid>
             {urlDeployedVersion && (
-              <>
-                <Spacer x={1} />
+              <Grid>
                 <Link
                   onClick={e => {
                     e.stopPropagation()
@@ -150,9 +171,9 @@ const ProjectCard = (props: Props) => {
                     Visit deployed app
                   </Button>
                 </Link>
-              </>
+              </Grid>
             )}
-          </Row>
+          </Grid.Container>
         </Card.Footer>
       </Card>
     </Link>

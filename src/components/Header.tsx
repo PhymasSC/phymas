@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Text, Spacer, Row, Button } from '@nextui-org/react'
+import { Text, Spacer, Row, Button, Grid } from '@nextui-org/react'
 import { motion, Variants } from 'framer-motion'
 import {
   faArrowCircleDown,
@@ -98,32 +98,35 @@ const About = () => {
         </motion.div>
         <Spacer y={2} />
         <motion.div variants={childrenVariant}>
-          <Row justify='center' align='center'>
-            <Button
-              size='xl'
-              shadow
-              ghost
-              icon={<FontAwesomeIcon icon={faEnvelope} />}
-              auto
-              as='a'
-              href='mailto:phymaslau@gmail.com?subject=Job Offer for [Job Type] Intern Position at [Company Name]'
-            >
-              Hire me
-            </Button>
-            <Spacer x={1} />
-            <Button
-              size='xl'
-              light
-              iconRight={<FontAwesomeIcon icon={faDownload} />}
-              auto
-              color='secondary'
-              as='a'
-              href='/files/Lau_Sheng_Cher_Resume.pdf'
-              target='_blank'
-            >
-              View Resume{' '}
-            </Button>
-          </Row>
+          <Grid.Container justify='center' gap={1}>
+            <Grid>
+              <Button
+                size='xl'
+                shadow
+                ghost
+                icon={<FontAwesomeIcon icon={faEnvelope} />}
+                auto
+                as='a'
+                href='mailto:phymaslau@gmail.com?subject=Job Offer for [Job Type] Intern Position at [Company Name]'
+              >
+                Hire me
+              </Button>
+            </Grid>
+            <Grid>
+              <Button
+                size='xl'
+                light
+                iconRight={<FontAwesomeIcon icon={faDownload} />}
+                auto
+                color='secondary'
+                as='a'
+                href='/files/Lau_Sheng_Cher_Resume.pdf'
+                target='_blank'
+              >
+                View Resume{' '}
+              </Button>
+            </Grid>
+          </Grid.Container>
           <Spacer y={3} />
         </motion.div>
         <Row justify='center' align='center'>
