@@ -1,4 +1,4 @@
-import { Container, Col, Row, Text, Spacer, Link } from '@nextui-org/react'
+import { Container, Row, Text, Spacer, Link } from '@nextui-org/react'
 import GitHub from './icons/Github'
 import LinkedIn from './icons/LinkedIn'
 import { useTheme } from '@nextui-org/react'

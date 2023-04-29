@@ -3,16 +3,7 @@ import {
   faArrowUpRightFromSquare,
   faLock,
 } from '@fortawesome/free-solid-svg-icons'
-import {
-  Badge,
-  Button,
-  Card,
-  Container,
-  Grid,
-  Row,
-  Spacer,
-  Text,
-} from '@nextui-org/react'
+import { Badge, Button, Card, Grid, Text } from '@nextui-org/react'
 import Link from 'next/link'
 import Image from 'next/image'
 

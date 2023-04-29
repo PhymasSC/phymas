@@ -1,5 +1,5 @@
 import { Text, TextProps } from '@nextui-org/react'
-import { easeIn, m, motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 
 type AnimatedTextProps = {

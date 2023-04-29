@@ -30,7 +30,6 @@ const Phymas = (props: Props) => (
     strokeLinejoin='round'
     strokeLinecap='round'
     width={props.size}
-    // className={`w-[6%] overflow-visible stroke-${props.color} fill-black stroke-[20] stroke-linejoin-round stroke-linecap-round`}
   >
     <motion.path
       variants={icon}

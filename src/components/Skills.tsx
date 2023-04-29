@@ -1,5 +1,4 @@
-import { Card, Text, Col, Row, Grid, Button } from '@nextui-org/react'
-import { motion } from 'framer-motion'
+import { Text, Grid } from '@nextui-org/react'
 import AnimatedCard from './AnimatedCard'
 import SkillCard from './SkillCard'
 

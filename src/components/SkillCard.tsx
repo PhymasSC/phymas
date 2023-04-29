@@ -1,6 +1,6 @@
 import { faExternalLink, faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Card, Col, Row, Button, Text, Link } from '@nextui-org/react'
+import { Card, Col, Row, Button, Text } from '@nextui-org/react'
 import Image from 'next/image'
 
 const SkillCard = () => {
