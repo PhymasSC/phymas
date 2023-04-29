@@ -28,10 +28,7 @@ const AnimatedChargingBar = (props: AnimatedChargingBarProps) => {
                   }`,
                   scale: [1, 1.2, 1],
                   transition: {
-                    delay:
-                      Math.floor(
-                        useSpring(index * 0.1, { stiffness: 400 }).get() * 100,
-                      ) / 100,
+                    delay: Math.floor(Math.log(index + 1) * 100 * 0.3) / 100,
                     type: 'tween',
                   },
                 }}
