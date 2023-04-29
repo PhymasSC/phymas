@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import Projects from '@/components/Projects'
 import About from '@/components/About'
-import { Col, Text, Row, Grid } from '@nextui-org/react'
+import { Col, Text, Grid } from '@nextui-org/react'
 import Skills from '@/components/Skills'
 
 const Home = () => {

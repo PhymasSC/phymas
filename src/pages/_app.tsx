@@ -10,7 +10,6 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useSSR } from '@nextui-org/react'
 import Footer from '@/components/Footer'
 import './../styles/globals.css'
-import './../styles/Home.module.css'
 
 interface MyAppProps {
   Component: React.ComponentType
