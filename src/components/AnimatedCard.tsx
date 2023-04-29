@@ -1,12 +1,26 @@
 import { motion, useMotionValue, useTransform, useAnimate } from 'framer-motion'
 
-const AnimatedCard = ({ children }: { children: any }) => {
+interface AnimatedCardProps {
+  children: any
+  perspective?: number | string
+  rotateRate?: number
+}
+
+const AnimatedCard = ({ children, ...props }: AnimatedCardProps) => {
   const [scope, animate] = useAnimate()
   const x = useMotionValue(200)
   const y = useMotionValue(200)
 
-  const rotateX = useTransform(y, [0, 400], [2.5, -2.5])
-  const rotateY = useTransform(x, [0, 400], [-2.5, 2.5])
+  const rotateX = useTransform(
+    y,
+    [0, 400],
+    [props.rotateRate || 2.5, (props.rotateRate && -props.rotateRate) || -2.5],
+  )
+  const rotateY = useTransform(
+    x,
+    [0, 400],
+    [(props.rotateRate && -props.rotateRate) || -2.5, props.rotateRate || 2.5],
+  )
 
   function handleMouse(event: {
     currentTarget: { getBoundingClientRect: () => any }
@@ -34,7 +48,7 @@ const AnimatedCard = ({ children }: { children: any }) => {
         placeItems: 'center',
         placeContent: 'center',
         width: '100%',
-        perspective: '50rem',
+        perspective: `${props.perspective || '50rem'}`,
       }}
       onMouseMove={handleMouse}
       onMouseLeave={handleMouseLeave}
