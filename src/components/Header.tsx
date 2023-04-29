@@ -71,7 +71,7 @@ const About = () => {
         </motion.div>
         <motion.div variants={childrenVariant}>
           <Text h2 css={{ textAlign: 'center' }}>
-            Full-stack Web Developement Student 👨🏻‍💻
+            Full-stack Web Development Student 👨🏻‍💻
           </Text>
         </motion.div>
         <motion.div variants={childrenVariant}>

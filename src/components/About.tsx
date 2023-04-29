@@ -3,6 +3,9 @@ import { motion, useTransform, useScroll } from 'framer-motion'
 import Image from 'next/image'
 import AnimatedText from './AnimatedText'
 
+const age =
+  new Date(Date.now() - new Date('2000-04-19').getTime()).getFullYear() - 1970
+
 const About = () => {
   const { scrollY } = useScroll()
 
@@ -32,10 +35,7 @@ const About = () => {
                 lineHeight: '1.5',
               }}
             >
-              I&#39;m a 23 year old student from Malaysia. I&#39;m currently
-              studying computer science at the University of Malaysia Terengganu
-              in Terengganu, Malaysia. I&#39;m interested in web development and
-              software development.
+              {`I'm a ${age} year old student from Malaysia. I'm currently studying computer science at the University of Malaysia Terengganu in Terengganu, Malaysia. I'm interested in web development and software development.`}
             </AnimatedText>
           </Grid>
         </Grid.Container>

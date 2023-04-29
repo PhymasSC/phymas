@@ -10,11 +10,7 @@ const AnimatedChargingBar = (props: AnimatedChargingBarProps) => {
   return (
     <>
       <Container>
-        <Tooltip
-          contentColor='primary'
-          content={props.levelInText}
-          placement='right'
-        >
+        <Tooltip content={props.levelInText}>
           <Row>
             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i, index) => (
               <motion.div

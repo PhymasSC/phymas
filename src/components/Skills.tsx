@@ -40,9 +40,14 @@ const Languages: LanguageLevels = {
 const Skills = () => {
   return (
     <>
-      <Grid.Container gap={3}>
-        <Grid xs={12}>
-          <Text h1>Skills.</Text>
+      <Grid.Container
+        gap={3}
+        css={{
+          marginTop: '1rem',
+        }}
+      >
+        <Grid xs={12} justify='center'>
+          <Text h2>Skills.</Text>
         </Grid>
         <Grid xs={12} lg={4}>
           {

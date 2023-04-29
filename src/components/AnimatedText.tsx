@@ -40,7 +40,17 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
   return (
     <motion.text ref={ref} style={{ scale }}>
-      <Text {...props}>
+      <Text
+        {...props}
+        as='text'
+        aria-label={props.children}
+        css={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '.2rem',
+        }}
+      >
         {
           // separate each word into a span
           words.map((word, index) => {

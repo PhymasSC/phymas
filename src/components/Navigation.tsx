@@ -6,6 +6,7 @@ import {
   Navbar,
   Link,
   Spacer,
+  Button,
 } from '@nextui-org/react'
 import { useTheme as useNextTheme } from 'next-themes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,19 +17,89 @@ import {
   faChevronDown,
 } from '@fortawesome/free-solid-svg-icons'
 
+interface MyComponentProps {
+  theme: 'system' | 'dark' | 'light'
+  setter: (theme: 'system' | 'dark' | 'light') => void
+}
+const Theme: React.FC<MyComponentProps> = ({ theme, setter }) => (
+  <Dropdown isBordered>
+    <Dropdown.Button
+      auto
+      light
+      css={{
+        px: 0,
+        dflex: 'center',
+        svg: { pe: 'none' },
+      }}
+      iconRight={<FontAwesomeIcon icon={faChevronDown} />}
+      ripple={false}
+    >
+      {theme === 'system' ? (
+        <>
+          <FontAwesomeIcon icon={faLaptop} /> <Spacer x={0.4} />
+          <Text>System</Text>
+        </>
+      ) : theme === 'dark' ? (
+        <>
+          <FontAwesomeIcon icon={faMoon} /> <Spacer x={0.4} />
+          <Text>Dark</Text>
+        </>
+      ) : (
+        <>
+          <FontAwesomeIcon icon={faSun} /> <Spacer x={0.4} />
+          <Text>Light</Text>
+        </>
+      )}
+    </Dropdown.Button>
+    <Dropdown.Menu
+      //@ts-ignore
+      onAction={setter}
+      aria-label='Switch theme'
+      css={{
+        $$dropdownMenuWidth: '340px',
+        $$dropdownItemHeight: '$xs',
+        '& .nextui-dropdown-item': {
+          py: '$4',
+          // dropdown item left icon
+          svg: {
+            color: '$primary',
+            mr: '$4',
+          },
+          // dropdown item title
+          '& .nextui-dropdown-item-content': {
+            w: '100%',
+            fontWeight: '$semibold',
+          },
+        },
+      }}
+    >
+      <Dropdown.Item key='system' icon={<FontAwesomeIcon icon={faLaptop} />}>
+        System theme
+      </Dropdown.Item>
+      <Dropdown.Item key='light' icon={<FontAwesomeIcon icon={faSun} />}>
+        Light theme
+      </Dropdown.Item>
+      <Dropdown.Item key='dark' icon={<FontAwesomeIcon icon={faMoon} />}>
+        Dark theme
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+)
+
 const Navigation = () => {
   const { theme, setTheme } = useNextTheme()
   const { isDark } = useTheme()
 
   const collapseItems = ['About me', 'Projects', 'Contact']
-
+  const currentTheme: 'system' | 'dark' | 'light' =
+    theme === 'system' ? 'system' : isDark ? 'dark' : 'light'
   return (
     <>
       <Navbar isBordered variant='floating'>
-        <Link href='/' color='text'>
-          <Navbar.Brand>
-            <Navbar.Toggle showIn='xs' />
-            <Spacer></Spacer>
+        <Navbar.Brand>
+          <Navbar.Toggle showIn='xs' />
+          <Spacer></Spacer>
+          <Link href='/' color='text'>
             <Phymas size={30} color={isDark ? '#FFF' : '#000'} />
             <Text
               b
@@ -39,8 +110,8 @@ const Navigation = () => {
             >
               Phymas
             </Text>
-          </Navbar.Brand>
-        </Link>
+          </Link>
+        </Navbar.Brand>
 
         <Navbar.Content activeColor='default' variant='highlight' hideIn='xs'>
           <Navbar.Link href='#about'>About me</Navbar.Link>
@@ -54,79 +125,7 @@ const Navigation = () => {
           hideIn='xs'
           variant='underline'
         >
-          <Dropdown isBordered>
-            <Navbar.Item>
-              <Dropdown.Button
-                auto
-                light
-                css={{
-                  px: 0,
-                  dflex: 'center',
-                  svg: { pe: 'none' },
-                }}
-                iconRight={<FontAwesomeIcon icon={faChevronDown} />}
-                ripple={false}
-              >
-                {theme === 'system' ? (
-                  <>
-                    <FontAwesomeIcon icon={faLaptop} /> <Spacer x={0.4} />
-                    <Text>System</Text>
-                  </>
-                ) : isDark ? (
-                  <>
-                    <FontAwesomeIcon icon={faMoon} /> <Spacer x={0.4} />
-                    <Text>Dark</Text>
-                  </>
-                ) : (
-                  <>
-                    <FontAwesomeIcon icon={faSun} /> <Spacer x={0.4} />
-                    <Text>Light</Text>
-                  </>
-                )}
-              </Dropdown.Button>
-            </Navbar.Item>
-            <Dropdown.Menu
-              //@ts-ignore
-              onAction={setTheme}
-              aria-label='Switch theme'
-              css={{
-                $$dropdownMenuWidth: '340px',
-                $$dropdownItemHeight: '70px',
-                '& .nextui-dropdown-item': {
-                  py: '$4',
-                  // dropdown item left icon
-                  svg: {
-                    color: '$primary',
-                    mr: '$4',
-                  },
-                  // dropdown item title
-                  '& .nextui-dropdown-item-content': {
-                    w: '100%',
-                    fontWeight: '$semibold',
-                  },
-                },
-              }}
-            >
-              <Dropdown.Item
-                key='system'
-                icon={<FontAwesomeIcon icon={faLaptop} />}
-              >
-                System theme
-              </Dropdown.Item>
-              <Dropdown.Item
-                key='light'
-                icon={<FontAwesomeIcon icon={faSun} />}
-              >
-                Light theme
-              </Dropdown.Item>
-              <Dropdown.Item
-                key='dark'
-                icon={<FontAwesomeIcon icon={faMoon} />}
-              >
-                Dark theme
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <Theme theme={currentTheme} setter={setTheme} />
         </Navbar.Content>
 
         <Navbar.Collapse showIn='xs'>
@@ -143,6 +142,9 @@ const Navigation = () => {
               </Link>
             </Navbar.CollapseItem>
           ))}
+          <Navbar.CollapseItem>
+            <Theme theme={currentTheme} setter={setTheme} />
+          </Navbar.CollapseItem>
         </Navbar.Collapse>
       </Navbar>
     </>
