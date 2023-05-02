@@ -1,4 +1,4 @@
-import { useTheme, Grid } from '@nextui-org/react'
+import { useTheme, Grid, Text } from '@nextui-org/react'
 import Phymas from './icons/Phymas'
 import ProjectCard from './ProjectCard'
 
@@ -126,6 +126,8 @@ const Projects = () => {
           },
         }}
       >
+        <Text h1>Projects.</Text>
+
         {projects.map((project, index) => (
           <Grid
             xs={12}
