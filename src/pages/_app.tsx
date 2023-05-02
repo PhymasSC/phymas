@@ -43,25 +43,25 @@ const App = ({ Component, pageProps }: MyAppProps) => {
   return (
     <>
       <Meta />
-      isBrowser && (
-      <NextUIProvider>
-        <NextThemesProvider
-          defaultTheme='system'
-          attribute='class'
-          value={{
-            light: lightTheme.className,
-            dark: darkTheme.className,
-          }}
-        >
-          <Container>
-            <Navbar />
-            <Spacer />
-            <Component {...pageProps} />
-            <Footer />
-          </Container>
-        </NextThemesProvider>
-      </NextUIProvider>
-      )
+      {isBrowser && (
+        <NextUIProvider>
+          <NextThemesProvider
+            defaultTheme='system'
+            attribute='class'
+            value={{
+              light: lightTheme.className,
+              dark: darkTheme.className,
+            }}
+          >
+            <Container>
+              <Navbar />
+              <Spacer />
+              <Component {...pageProps} />
+              <Footer />
+            </Container>
+          </NextThemesProvider>
+        </NextUIProvider>
+      )}
     </>
   )
 }
