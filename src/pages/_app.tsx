@@ -41,28 +41,28 @@ const App = ({ Component, pageProps }: MyAppProps) => {
   const { isBrowser } = useSSR()
 
   return (
-    isBrowser && (
-      <>
-        <Meta />
-        <NextUIProvider>
-          <NextThemesProvider
-            defaultTheme='system'
-            attribute='class'
-            value={{
-              light: lightTheme.className,
-              dark: darkTheme.className,
-            }}
-          >
-            <Container>
-              <Navbar />
-              <Spacer />
-              <Component {...pageProps} />
-              <Footer />
-            </Container>
-          </NextThemesProvider>
-        </NextUIProvider>
-      </>
-    )
+    <>
+      <Meta />
+      isBrowser && (
+      <NextUIProvider>
+        <NextThemesProvider
+          defaultTheme='system'
+          attribute='class'
+          value={{
+            light: lightTheme.className,
+            dark: darkTheme.className,
+          }}
+        >
+          <Container>
+            <Navbar />
+            <Spacer />
+            <Component {...pageProps} />
+            <Footer />
+          </Container>
+        </NextThemesProvider>
+      </NextUIProvider>
+      )
+    </>
   )
 }
 
