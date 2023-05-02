@@ -9,8 +9,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useSSR } from '@nextui-org/react'
 import Footer from '@/components/Footer'
 import './../styles/globals.css'
-import Head from 'next/head'
-import { DefaultSeo } from 'next-seo'
+import Meta from '@/components/Meta'
 
 interface MyAppProps {
   Component: React.ComponentType
@@ -42,34 +41,9 @@ const App = ({ Component, pageProps }: MyAppProps) => {
   const { isBrowser } = useSSR()
 
   return (
-    isBrowser && (
-      <>
-        <DefaultSeo
-          title='Phymas'
-          description="Meet Lau Sheng Cher, a passionate computer science student seeking an internship. With impressive projects showcasing his potential as a full-stack web developer, connect with this rising talent in tech today. Browse Lau Sheng Cher's portfolio and discover how he can add value to your organization."
-          openGraph={{
-            url: 'https://phymas.vercel.app/',
-            title: 'Phymas',
-            description:
-              "Meet Lau Sheng Cher, a passionate computer science student seeking an internship. With impressive projects showcasing his potential as a full-stack web developer, connect with this rising talent in tech today. Browse Lau Sheng Cher's portfolio and discover how he can add value to your organization.",
-            images: [
-              {
-                url: 'https://www.phymas.me/api/og',
-                width: 800,
-                height: 600,
-                alt: 'Phymas',
-              },
-            ],
-            site_name: 'Phymas',
-          }}
-          robotsProps={{
-            nosnippet: true,
-            notranslate: true,
-            noimageindex: true,
-            noarchive: true,
-          }}
-          themeColor='#0072F5'
-        />
+    <>
+      <Meta />
+      {isBrowser && (
         <NextUIProvider>
           <NextThemesProvider
             defaultTheme='system'
@@ -87,8 +61,8 @@ const App = ({ Component, pageProps }: MyAppProps) => {
             </Container>
           </NextThemesProvider>
         </NextUIProvider>
-      </>
-    )
+      )}
+    </>
   )
 }
 

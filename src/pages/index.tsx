@@ -3,14 +3,12 @@ import Projects from '@/components/Projects'
 import About from '@/components/About'
 import { Col, Text, Grid } from '@nextui-org/react'
 import Skills from '@/components/Skills'
-import Head from 'next/head'
+import Meta from '@/components/Meta'
 
 const Home = () => {
   return (
     <>
-      <Head>
-        <title>Phymas</title>
-      </Head>
+      <Meta />
       <Grid.Container md>
         <Grid>
           <Col
@@ -42,9 +40,3 @@ const Home = () => {
 }
 
 export default Home
-
-export const getStaticProps = async () => {
-  return {
-    props: {},
-  }
-}
