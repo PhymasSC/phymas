@@ -1,11 +1,18 @@
 import { Text, Grid, Card, theme } from '@nextui-org/react'
 import AnimatedCard from './AnimatedCard'
 import AnimatedChargingBar from './AnimatedChargingBar'
+import MongoDB from './icons/MongoDB'
 import NextJs from './icons/NextJs'
 import Nodejs from './icons/Nodejs'
 import ReactLogo from './icons/React'
 import TypeScript from './icons/TypeScript'
 import SkillCard from './SkillCard'
+import GraphQL from './icons/GraphQL'
+import MySQL from './icons/MySQL'
+import Java from './icons/Java'
+import Python from './icons/Python'
+import Lua from './icons/Lua'
+import Git from './icons/Git'
 
 type LanguageLevels = {
   [key: string]: {
@@ -75,6 +82,62 @@ const ProgrammingSkills = [
       "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
     url: 'https://nodejs.org/en/',
     image: <Nodejs width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'GraphQL',
+    description:
+      'GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.',
+    url: 'https://graphql.org/',
+    image: <GraphQL width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'MongoDB',
+    description:
+      'MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era.',
+    url: 'https://www.mongodb.com/',
+    image: <MongoDB width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'MySQL',
+    description:
+      'MySQL is an open-source relational database management system.',
+    url: 'https://www.mysql.com/',
+    image: <MySQL width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'Java',
+    description:
+      'Java is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.',
+    url: 'https://www.java.com/en/',
+    image: <Java width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'Python',
+    description:
+      'Python is an interpreted, high-level and general-purpose programming language.',
+    url: 'https://www.python.org/',
+    image: <Python width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'Lua',
+    description:
+      'Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded use in applications.',
+    url: 'https://www.lua.org/',
+    image: <Lua width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'Git',
+    description:
+      'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.',
+    url: 'https://git-scm.com/',
+    image: <Git width={200} height={200} />,
     level: 5,
   },
 ]
