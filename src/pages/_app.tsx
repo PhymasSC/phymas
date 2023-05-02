@@ -10,6 +10,7 @@ import { useSSR } from '@nextui-org/react'
 import Footer from '@/components/Footer'
 import './../styles/globals.css'
 import Meta from '@/components/Meta'
+import { Analytics } from '@vercel/analytics/react'
 
 interface MyAppProps {
   Component: React.ComponentType
@@ -62,6 +63,7 @@ const App = ({ Component, pageProps }: MyAppProps) => {
           </NextThemesProvider>
         </NextUIProvider>
       )}
+      <Analytics />
     </>
   )
 }
