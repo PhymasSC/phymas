@@ -41,7 +41,7 @@ const About = () => {
         >
           <Text
             h1
-            className=' text-center text-[10rem] font-extrabold sm:text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[6rem] 2xl:text-[7rem] 3xl:text-[8rem]'
+            className=' text-center text-[2rem] font-extrabold sm:text-[5rem] xl:text-[6rem] '
             css={{
               textGradient: `45deg, $accents8 -20%, $accents9 100%`,
             }}
@@ -50,12 +50,19 @@ const About = () => {
           </Text>
         </motion.div>
         <motion.div variants={childrenVariant}>
-          <Text h2 css={{ textAlign: 'center' }}>
+          <Text
+            h2
+            className='text-center text-sm sm:text-[2rem] xl:text-[3rem]'
+          >
             Full-stack Web Development Student 👨🏻‍💻
           </Text>
         </motion.div>
         <motion.div variants={childrenVariant}>
-          <Text h3 weight='light' css={{ textAlign: 'center' }}>
+          <Text
+            h3
+            weight='light'
+            className='text-center text-xs sm:text-[1rem] sm:leading-8 xl:text-[2rem] xl:leading-[4rem]'
+          >
             I am currently seeking for an internship
           </Text>
         </motion.div>
