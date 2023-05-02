@@ -1,5 +1,4 @@
-import { faExternalLink, faStar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import { Card, Text, Link, Grid, Button } from '@nextui-org/react'
 import Image from 'next/image'
 import AnimatedCard from './AnimatedCard'
@@ -82,7 +81,7 @@ const SkillCard = (props: SkillCardProps) => {
                   light
                   size='sm'
                   color='primary'
-                  iconRight={<FontAwesomeIcon icon={faExternalLink} />}
+                  iconRight={<ArrowTopRightOnSquareIcon className='h-4 w-4' />}
                 >
                   {`Learn more`}
                 </Button>

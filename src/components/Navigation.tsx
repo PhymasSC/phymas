@@ -8,13 +8,12 @@ import {
   Spacer,
 } from '@nextui-org/react'
 import { useTheme as useNextTheme } from 'next-themes'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faMoon,
-  faSun,
-  faLaptop,
-  faChevronDown,
-} from '@fortawesome/free-solid-svg-icons'
+  MoonIcon,
+  SunIcon,
+  DeviceTabletIcon,
+  ChevronDownIcon,
+} from '@heroicons/react/24/solid'
 
 interface MyComponentProps {
   theme: 'system' | 'dark' | 'light'
@@ -30,22 +29,22 @@ const Theme: React.FC<MyComponentProps> = ({ theme, setter }) => (
         dflex: 'center',
         svg: { pe: 'none' },
       }}
-      iconRight={<FontAwesomeIcon icon={faChevronDown} />}
+      iconRight={<ChevronDownIcon className='h-4 w-4' />}
       ripple={false}
     >
       {theme === 'system' ? (
         <>
-          <FontAwesomeIcon icon={faLaptop} /> <Spacer x={0.4} />
+          <DeviceTabletIcon className='h-4 w-4 mr-2' />
           <Text>System</Text>
         </>
       ) : theme === 'dark' ? (
         <>
-          <FontAwesomeIcon icon={faMoon} /> <Spacer x={0.4} />
+          <MoonIcon className='h-4 w-4 mr-2' />
           <Text>Dark</Text>
         </>
       ) : (
         <>
-          <FontAwesomeIcon icon={faSun} /> <Spacer x={0.4} />
+          <SunIcon className='h-4 w-4 mr-2' />
           <Text>Light</Text>
         </>
       )}
@@ -72,13 +71,16 @@ const Theme: React.FC<MyComponentProps> = ({ theme, setter }) => (
         },
       }}
     >
-      <Dropdown.Item key='system' icon={<FontAwesomeIcon icon={faLaptop} />}>
+      <Dropdown.Item
+        key='system'
+        icon={<DeviceTabletIcon className='h-4 w-4' />}
+      >
         System theme
       </Dropdown.Item>
-      <Dropdown.Item key='light' icon={<FontAwesomeIcon icon={faSun} />}>
+      <Dropdown.Item key='light' icon={<SunIcon className='h-4 w-4' />}>
         Light theme
       </Dropdown.Item>
-      <Dropdown.Item key='dark' icon={<FontAwesomeIcon icon={faMoon} />}>
+      <Dropdown.Item key='dark' icon={<MoonIcon className='h-4 w-4' />}>
         Dark theme
       </Dropdown.Item>
     </Dropdown.Menu>

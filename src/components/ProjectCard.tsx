@@ -1,8 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faArrowUpRightFromSquare,
-  faLock,
-} from '@fortawesome/free-solid-svg-icons'
 import {
   Badge,
   Button,
@@ -11,6 +6,11 @@ import {
   Text,
   Link as NextUILink,
 } from '@nextui-org/react'
+import {
+  ArrowTopRightOnSquareIcon,
+  LockClosedIcon,
+} from '@heroicons/react/24/solid'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import AnimatedCard from './AnimatedCard'
@@ -148,7 +148,7 @@ const ProjectCard = (props: Props) => {
                 >
                   <Button
                     iconRight={
-                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                      <ArrowTopRightOnSquareIcon className='h-4 w-4' />
                     }
                     auto
                     ghost
@@ -159,7 +159,7 @@ const ProjectCard = (props: Props) => {
                 </Link>
               ) : (
                 <Button
-                  icon={<FontAwesomeIcon icon={faLock} />}
+                  icon={<LockClosedIcon className='h-4 w-4' />}
                   auto
                   color='error'
                   ghost
@@ -183,7 +183,7 @@ const ProjectCard = (props: Props) => {
                 >
                   <Button
                     iconRight={
-                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                      <ArrowTopRightOnSquareIcon className='h-4 w-4 ' />
                     }
                     auto
                     ghost

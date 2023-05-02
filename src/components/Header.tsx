@@ -1,12 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  ArrowDownTrayIcon,
+  MapPinIcon,
+  ArrowDownCircleIcon,
+  EnvelopeIcon,
+} from '@heroicons/react/24/solid'
 import { Text, Spacer, Row, Button, Grid } from '@nextui-org/react'
 import { motion, Variants } from 'framer-motion'
-import {
-  faArrowCircleDown,
-  faDownload,
-  faEnvelope,
-  faLocationDot,
-} from '@fortawesome/free-solid-svg-icons'
 
 const About = () => {
   const parentVariant: Variants = {
@@ -81,17 +80,7 @@ const About = () => {
         </motion.div>
         <motion.div variants={childrenVariant}>
           <Row justify='center' align='center'>
-            <FontAwesomeIcon
-              rotate={90}
-              size='lg'
-              icon={faLocationDot}
-              color='rgb(255,59,48)'
-              style={{
-                width: '1rem',
-                height: '1rem',
-                marginTop: '-10px',
-              }}
-            />
+            <MapPinIcon className='h-6 w-6 text-red-500 mt-[-0.75rem] ' />
             <Spacer x={0.5} />
             <Text h4 weight='light'>
               Penang, Malaysia
@@ -106,7 +95,7 @@ const About = () => {
                 size='xl'
                 shadow
                 ghost
-                icon={<FontAwesomeIcon icon={faEnvelope} />}
+                icon={<EnvelopeIcon className='h-6 w-6' />}
                 auto
                 as='a'
                 href='mailto:phymaslau@gmail.com?subject=Job Offer for [Job Type] Intern Position at [Company Name]'
@@ -118,7 +107,7 @@ const About = () => {
               <Button
                 size='xl'
                 light
-                iconRight={<FontAwesomeIcon icon={faDownload} />}
+                iconRight={<ArrowDownTrayIcon className='h-6 w-6' />}
                 auto
                 color='secondary'
                 as='a'
@@ -132,15 +121,7 @@ const About = () => {
           <Spacer y={3} />
         </motion.div>
         <Row justify='center' align='center'>
-          <FontAwesomeIcon
-            icon={faArrowCircleDown}
-            size='sm'
-            bounce
-            style={{
-              width: '2rem',
-              height: '2rem',
-            }}
-          />
+          <ArrowDownCircleIcon className='h-10 r-10 animate-bounce' />
         </Row>
       </motion.div>
     </>
