@@ -107,6 +107,7 @@ const ProjectCard = (props: Props) => {
             <Grid>
               {Object.values(technologies).map((technology, index) => (
                 <NextUILink
+                  key={index}
                   href={technology.site}
                   onClick={e => {
                     e.stopPropagation()
@@ -121,7 +122,6 @@ const ProjectCard = (props: Props) => {
                   }}
                 >
                   <Badge
-                    key={index}
                     color='primary'
                     variant='flat'
                     css={{ fontSize: '$xs' }}

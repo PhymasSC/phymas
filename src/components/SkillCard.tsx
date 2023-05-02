@@ -50,7 +50,7 @@ const SkillCard = (props: SkillCardProps) => {
         </Card.Body>
         <Card.Footer isBlurred>
           <Grid.Container gap={2}>
-            <Grid xs={12} md={8}>
+            <Grid xs={12} lg={8}>
               <Grid.Container>
                 <Grid xs={12}>
                   <Text
@@ -75,7 +75,7 @@ const SkillCard = (props: SkillCardProps) => {
               </Grid.Container>
             </Grid>
 
-            <Grid xs={12} md={4}>
+            <Grid xs={12} lg={4}>
               <Link href={url}>
                 <Button
                   auto

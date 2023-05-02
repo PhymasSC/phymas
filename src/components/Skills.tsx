@@ -145,9 +145,8 @@ const Skills = () => {
         {
           // Skills card
           ProgrammingSkills.map((skill, index) => (
-            <Grid xs={12} md={4}>
+            <Grid key={index} xs={12} md={4}>
               <SkillCard
-                key={index}
                 name={skill.name}
                 description={skill.description}
                 url={skill.url}
