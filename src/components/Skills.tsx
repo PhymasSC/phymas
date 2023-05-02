@@ -1,6 +1,10 @@
-import { Text, Grid, Card } from '@nextui-org/react'
+import { Text, Grid, Card, theme } from '@nextui-org/react'
 import AnimatedCard from './AnimatedCard'
 import AnimatedChargingBar from './AnimatedChargingBar'
+import NextJs from './icons/NextJs'
+import Nodejs from './icons/Nodejs'
+import ReactLogo from './icons/React'
+import TypeScript from './icons/TypeScript'
 import SkillCard from './SkillCard'
 
 type LanguageLevels = {
@@ -13,7 +17,7 @@ type LanguageLevels = {
 }
 
 const Languages: LanguageLevels = {
-  Mandarin: {
+  ['Mandarin 普通话']: {
     Listening: 10,
     Speaking: 9,
     Reading: 9,
@@ -31,11 +35,49 @@ const Languages: LanguageLevels = {
     Reading: 6,
     Writing: 4,
   },
-  Hokkien: {
+  ['Hokkien 福建话']: {
     Listening: 6,
     Speaking: 4,
   },
 }
+
+const ProgrammingSkills = [
+  {
+    name: 'React',
+    description: 'A JavaScript library for building user interfaces',
+    url: 'https://reactjs.org/',
+    image: <ReactLogo width={200} height={200} />,
+    level: 7,
+  },
+  {
+    name: 'Next.js',
+    description: 'The React Framework for Production',
+    url: 'https://nextjs.org/',
+    image: (
+      <NextJs
+        width={200}
+        height={200}
+        color={theme.colors.accents9.toString()}
+      />
+    ),
+    level: 7,
+  },
+  {
+    name: 'TypeScript',
+    description: 'Typed JavaScript at Any Scale.',
+    url: 'https://www.typescriptlang.org/',
+    image: <TypeScript width={200} height={200} />,
+    level: 5,
+  },
+  {
+    name: 'Node.js',
+    description:
+      "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
+    url: 'https://nodejs.org/en/',
+    image: <Nodejs width={200} height={200} />,
+    level: 5,
+  },
+]
 
 const Skills = () => {
   return (
@@ -49,10 +91,10 @@ const Skills = () => {
         <Grid xs={12} justify='center'>
           <Text h2>Skills.</Text>
         </Grid>
-        <Grid xs={12} lg={4}>
-          {
-            // Languages card
-          }
+        {
+          // Languages card
+        }
+        <Grid xs={12}>
           <AnimatedCard>
             <Card
               variant='bordered'
@@ -100,21 +142,21 @@ const Skills = () => {
             </Card>
           </AnimatedCard>
         </Grid>
-        <Grid xs={12} md={4}>
-          <SkillCard />
-        </Grid>
-        <Grid xs={12} md={4}>
-          <SkillCard />
-        </Grid>
-        <Grid xs={12} md={4}>
-          <SkillCard />
-        </Grid>
-        <Grid xs={12} md={4}>
-          <SkillCard />
-        </Grid>
-        <Grid xs={12} md={4}>
-          <SkillCard />
-        </Grid>
+        {
+          // Skills card
+          ProgrammingSkills.map((skill, index) => (
+            <Grid xs={12} md={4}>
+              <SkillCard
+                key={index}
+                name={skill.name}
+                description={skill.description}
+                url={skill.url}
+                image={skill.image}
+                level={skill.level}
+              />
+            </Grid>
+          ))
+        }
       </Grid.Container>
     </>
   )

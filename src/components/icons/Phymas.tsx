@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion'
 
-type Props = {
-  size?: number
-  color: string
-}
+import { IconProps } from '@/types/IconProps'
 
 const icon = {
   hidden: {
@@ -18,18 +15,18 @@ const icon = {
   },
 }
 
-const Phymas = (props: Props) => (
+const Phymas = (props: IconProps) => (
   <motion.svg
     xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 375 374.999991'
     className='logo'
-    color={props.color}
-    stroke={props.color}
+    color={props?.color || '#fff'}
+    stroke={props?.color || '#fff'}
     fill='none'
     strokeWidth='20'
     strokeLinejoin='round'
     strokeLinecap='round'
-    width={props.size}
+    width={(props?.width || 375) * (props?.size || 1)}
   >
     <motion.path
       variants={icon}

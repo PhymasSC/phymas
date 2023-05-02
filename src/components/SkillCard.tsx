@@ -1,10 +1,20 @@
 import { faExternalLink, faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Card, Col, Row, Button, Text } from '@nextui-org/react'
+import { Card, Text, Link, Grid, Button } from '@nextui-org/react'
 import Image from 'next/image'
 import AnimatedCard from './AnimatedCard'
+import AnimatedChargingBar from './AnimatedChargingBar'
 
-const SkillCard = () => {
+interface SkillCardProps {
+  name: string
+  description: string
+  url: string
+  image: React.ReactNode | string
+  level?: number
+}
+
+const SkillCard = (props: SkillCardProps) => {
+  const { name, description, url, image, level } = props
   return (
     <AnimatedCard>
       <Card
@@ -12,79 +22,73 @@ const SkillCard = () => {
         css={{
           width: '100%',
           minHeight: '300px',
+          height: '100%',
         }}
       >
-        <Card.Header
-          css={{
-            position: 'absolute',
-            zIndex: 1,
-            background: 'linear-gradient(180deg, #00000080, #FFFFFF00)',
-          }}
-        >
-          <Col>
-            <Text
-              size={12}
-              weight='bold'
-              transform='uppercase'
-              color='#ffffffAA'
-            >
-              What to watch
-            </Text>
-            <Text h4 color='white'>
-              Stream the Acme event
-            </Text>
-          </Col>
+        <Card.Header>
+          <Text h1 size={12} weight='bold' transform='uppercase'>
+            {name}
+          </Text>
         </Card.Header>
-        <Card.Body css={{ p: 0 }}>
-          <Image
-            src='/img/bg.png'
-            alt='Picture of the author'
-            height={300}
-            width={800}
-            style={{ objectFit: 'cover' }}
-          ></Image>
-        </Card.Body>
-        <Card.Footer
-          isBlurred
+        <Card.Body
           css={{
-            position: 'absolute',
-            bgBlur: '#33333366',
-            borderTop: '$borderWeights$light solid rgba(180, 180, 180, 0.5)',
-            bottom: 0,
-            zIndex: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <Row>
-            <Col>
-              <FontAwesomeIcon icon={faStar} color='gold' />
-              <FontAwesomeIcon icon={faStar} color='gold' />
-              <FontAwesomeIcon icon={faStar} color='gold' />
-              <FontAwesomeIcon icon={faStar} color='gold' />
-              <FontAwesomeIcon icon={faStar} color='gold' />
-            </Col>
-            <Col>
-              <Row justify='flex-end'>
-                <Button
-                  flat
-                  auto
-                  color='success'
-                  rounded
-                  iconRight={
-                    <FontAwesomeIcon icon={faExternalLink} size='xs' />
-                  }
-                >
+          {image?.toLocaleString() === '[object Object]' ? (
+            image
+          ) : (
+            <Image
+              src={image?.toLocaleString() || ''}
+              alt={description}
+              height={300}
+              width={300}
+            />
+          )}
+        </Card.Body>
+        <Card.Footer isBlurred>
+          <Grid.Container gap={2}>
+            <Grid xs={12} md={8}>
+              <Grid.Container>
+                <Grid xs={12}>
                   <Text
                     css={{ color: 'inherit' }}
                     size={12}
                     weight='bold'
                     transform='uppercase'
                   >
-                    Learn More
+                    {description}{' '}
                   </Text>
+                </Grid>
+
+                <Grid xs={12}>
+                  <Text small>Proficiency level:</Text>
+                  {level && (
+                    <AnimatedChargingBar
+                      level={level}
+                      levelInText={`Level: ${level}`}
+                    />
+                  )}
+                </Grid>
+              </Grid.Container>
+            </Grid>
+
+            <Grid xs={12} md={4}>
+              <Link href={url}>
+                <Button
+                  auto
+                  light
+                  size='sm'
+                  color='primary'
+                  iconRight={<FontAwesomeIcon icon={faExternalLink} />}
+                >
+                  {`Learn more`}
                 </Button>
-              </Row>
-            </Col>
-          </Row>
+              </Link>
+            </Grid>
+          </Grid.Container>
         </Card.Footer>
       </Card>
     </AnimatedCard>

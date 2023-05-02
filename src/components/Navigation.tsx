@@ -6,7 +6,6 @@ import {
   Navbar,
   Link,
   Spacer,
-  Button,
 } from '@nextui-org/react'
 import { useTheme as useNextTheme } from 'next-themes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -100,7 +99,7 @@ const Navigation = () => {
           <Navbar.Toggle showIn='xs' />
           <Spacer></Spacer>
           <Link href='/' color='text'>
-            <Phymas size={30} color={isDark ? '#FFF' : '#000'} />
+            <Phymas size={0.05} color={isDark ? '#FFF' : '#000'} />
             <Text
               b
               css={{
