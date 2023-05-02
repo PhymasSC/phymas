@@ -83,10 +83,12 @@ const About = () => {
           <Row justify='center' align='center'>
             <FontAwesomeIcon
               rotate={90}
-              icon={faLocationDot}
               size='lg'
+              icon={faLocationDot}
               color='rgb(255,59,48)'
               style={{
+                width: '1rem',
+                height: '1rem',
                 marginTop: '-10px',
               }}
             />
@@ -130,7 +132,15 @@ const About = () => {
           <Spacer y={3} />
         </motion.div>
         <Row justify='center' align='center'>
-          <FontAwesomeIcon icon={faArrowCircleDown} bounce />
+          <FontAwesomeIcon
+            icon={faArrowCircleDown}
+            size='sm'
+            bounce
+            style={{
+              width: '2rem',
+              height: '2rem',
+            }}
+          />
         </Row>
       </motion.div>
     </>
