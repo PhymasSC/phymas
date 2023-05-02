@@ -164,7 +164,7 @@ const Skills = () => {
               css={{
                 padding: '$md',
                 background:
-                  'linear-gradient(135deg, rgba(223, 237, 254, 0.6), rgba(145, 186, 236, 1))',
+                  'linear-gradient(135deg, $accents0, rgba(145, 186, 236, 1))',
               }}
             >
               <Card.Header>
