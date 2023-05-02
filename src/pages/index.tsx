@@ -9,26 +9,17 @@ const Home = () => {
   return (
     <>
       <Meta />
-      <Grid.Container md>
-        <Grid>
-          <Col
-            css={{
-              height: 'calc(100vh - 74px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Header />
-          </Col>
+      <Grid.Container xs={12}>
+        <Grid xs={12}>
+          <Header />
         </Grid>
-        <Grid>
+        <Grid xs={12}>
           <About />
         </Grid>
-        <Grid>
+        <Grid xs={12}>
           <Skills />
         </Grid>
-        <Grid>
+        <Grid xs={12}>
           <Col id='projects'>
             <Text h1>Projects.</Text>
             <Projects />

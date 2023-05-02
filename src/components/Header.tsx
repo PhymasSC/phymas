@@ -27,42 +27,23 @@ const About = () => {
 
   return (
     <>
-      <motion.div initial='initial' animate='animate' variants={parentVariant}>
+      <motion.div
+        initial='initial'
+        animate='animate'
+        variants={parentVariant}
+        className=' min-h-screen h-full flex flex-col justify-center items-center'
+      >
         <motion.div
           whileHover={{ scale: 1.1 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           variants={childrenVariant}
+          className='w-full'
         >
           <Text
             h1
+            className=' text-center text-[10rem] font-extrabold sm:text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[6rem] 2xl:text-[7rem] 3xl:text-[8rem]'
             css={{
-              textAlign: 'center',
-              fontSize: '10rem',
               textGradient: `45deg, $accents8 -20%, $accents9 100%`,
-              fontWeight: '$extrabold',
-              '@media (max-width: 1440px)': {
-                fontSize: '8rem',
-              },
-
-              '@media (max-width: 1024px)': {
-                fontSize: '6rem',
-              },
-
-              '@media(max-width: 960px )': {
-                fontSize: '5rem',
-              },
-
-              '@media (max-width: 768px)': {
-                fontSize: '4rem',
-              },
-
-              '@media (max-width: 480px)': {
-                fontSize: '3rem',
-              },
-
-              '@media (max-width: 380px)': {
-                fontSize: '2rem',
-              },
             }}
           >
             Lau Sheng Cher
