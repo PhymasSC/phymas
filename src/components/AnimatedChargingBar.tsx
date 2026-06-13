@@ -1,4 +1,6 @@
-import { Container, Row, Tooltip } from '@nextui-org/react'
+'use client'
+
+import { Tooltip } from '@nextui-org/tooltip'
 import { motion } from 'framer-motion'
 
 interface AnimatedChargingBarProps {
@@ -9,9 +11,9 @@ interface AnimatedChargingBarProps {
 const AnimatedChargingBar = (props: AnimatedChargingBarProps) => {
   return (
     <>
-      <Container>
+      <div className="w-full">
         <Tooltip content={props.levelInText}>
-          <Row>
+          <div className="flex flex-row">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i, index) => (
               <motion.div
                 key={index}
@@ -36,9 +38,9 @@ const AnimatedChargingBar = (props: AnimatedChargingBarProps) => {
                 }}
               />
             ))}
-          </Row>
+          </div>
         </Tooltip>
-      </Container>
+      </div>
     </>
   )
 }

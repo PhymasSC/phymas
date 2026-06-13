@@ -1,155 +1,140 @@
-import { useTheme, Grid, Text } from '@nextui-org/react'
+'use client'
+
+import { useTheme } from 'next-themes'
 import Phymas from './icons/Phymas'
 import ProjectCard from './ProjectCard'
 
+const projectList = [
+  {
+    name: 'Portfolio',
+    date: 'April 2022 - Current',
+    description: 'This is my portfolio website. It is built with Next.js and NextUI.',
+    url: 'https://phymas.com',
+    source: 'https://github.com/PhymasSC/phymas',
+    technology: ['Next.js', 'NextUI', 'Framer Motion', 'TypeScript'],
+    icon: <Phymas width={40} height={40} />,
+  },
+  {
+    name: 'UMT Fellow',
+    date: 'November 2022 - Current',
+    description:
+      'UMT Fellow is a platform for students to find and apply for fellowships.',
+    url: 'https://fellow.umt.edu.my',
+    source: 'https://github.com/UMTFellow/umtfellow',
+    technology: [
+      'Next.js',
+      'Mantine UI',
+      'Ably',
+      'Prisma',
+      'GraphQL',
+      'Apollo',
+      'TypeScript',
+    ],
+    icon: (
+      <img
+        src="/img/umt_fellow.webp"
+        width={40}
+        height={40}
+        alt="UMT Fellow"
+      />
+    ),
+  },
+  {
+    name: 'Online Badminton Court Booking System',
+    date: 'May 2022 - June 2022',
+    description: 'This is an online banking system built with Java Swing.',
+    source: 'https://github.com/PhymasSC/Online-Badminton-Court-Booking-System',
+    technology: ['Java EE', 'JSP', 'Servlet', 'MySQL', 'JavaScript', 'Daisy UI'],
+    icon: (
+      <img
+        src="/img/badminton.webp"
+        width={40}
+        height={40}
+        alt="Online Badminton Court Booking System"
+      />
+    ),
+  },
+  {
+    name: 'REVEUX',
+    date: 'December 2021 - January 2022',
+    description:
+      'REVEUX is a luxury ecommerce platform for luxury beauty products.',
+    source: 'https://github.com/PhymasSC/REVEUX',
+    technology: [
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Stripe',
+      'JavaScript',
+      'Tailwind CSS',
+    ],
+    icon: (
+      <img
+        src="/img/reveux.webp"
+        width={40}
+        height={40}
+        alt="REVEUX"
+      />
+    ),
+  },
+  {
+    name: 'Online Banking System',
+    date: 'May 2021 - July 2021',
+    description: 'This is an online banking system built with Java Swing.',
+    technology: ['Java SE', 'Java Swing', 'Google Mail API', 'Figma'],
+    icon: (
+      <img
+        src="/img/bank.webp"
+        width={40}
+        height={40}
+        alt="Online Banking System"
+      />
+    ),
+    isWip: true,
+    wipDescription: 'Request for source code',
+  },
+  {
+    name: "Shoot 'Em Up",
+    date: 'December 2020 - January 2021',
+    description: "Shoot 'Em Up is a 2D game built with Pygame.",
+    source: 'https://github.com/PhymasSC/Shoot-Em-Up',
+    technology: ['Python', 'Pygame'],
+    icon: (
+      <img
+        src="/img/spaceship.webp"
+        width={40}
+        height={40}
+        alt="Shoot 'Em Up"
+      />
+    ),
+  },
+]
+
 const Projects = () => {
-  const { isDark } = useTheme()
-
-  const projects = [
-    {
-      title: 'Portfolio',
-      description:
-        'This is my portfolio website. It is built with Next.js and NextUI.',
-      urlSourceCode: 'https://github.com/PhymasSC/phymas',
-      urlDeployedVersion: 'https://www.phymas.me/',
-      image: <Phymas size={0.1} color={isDark ? '#FFF' : '#000'} />,
-      technologies: [
-        { name: 'Next.js', site: 'https://nextjs.org/' },
-        { name: 'NextUI', site: 'https://nextui.org/' },
-        { name: 'Framer Motion', site: 'https://www.framer.com/motion/' },
-        { name: 'TypeScript', site: 'https://www.typescriptlang.org/' },
-      ],
-      timeline: 'April 2022 - Current',
-    },
-    {
-      title: 'UMT Fellow',
-      description:
-        'UMT Fellow is a platform for students to find and apply for fellowships.',
-      urlDeployedVersion: 'https://www.umtfellow.social',
-      urlSourceCode: 'https://github.com/PhymasSC/umt-fellow-web',
-      image: '/img/umt_fellow_logo.png',
-      technologies: [
-        { name: 'Next.js', site: 'https://nextjs.org/' },
-        { name: 'Manitne UI', site: 'https://mantine.dev/' },
-        { name: 'Ably', site: 'https://ably.com/' },
-        { name: 'Prisma', site: 'https://www.prisma.io/' },
-        { name: 'GraphQL', site: 'https://graphql.org/' },
-        { name: 'Apollo', site: 'https://www.apollographql.com/' },
-        { name: 'TypeScript', site: 'https://www.typescriptlang.org/' },
-      ],
-      timeline: 'November 2022 - Current',
-    },
-    {
-      title: 'Online Badminton Court Booking System',
-      description: 'This is an online banking system built with Java Swing.',
-      urlSourceCode: 'https://github.com/PhymasSC/BadmintonPal_JSP_centric',
-      image: 'emoji-🏸',
-      technologies: [
-        {
-          name: 'Java EE',
-          site: 'https://www.oracle.com/java/technologies/java-ee-glance.html',
-        },
-        {
-          name: 'JSP',
-          site: 'https://www.oracle.com/java/technologies/jspt.html',
-        },
-        {
-          name: 'Servlet',
-          site: 'https://www.oracle.com/java/technologies/servlets.html',
-        },
-        { name: 'MySQL', site: 'https://www.mysql.com/' },
-        { name: 'JavaScript', site: 'https://www.javascript.com/' },
-        { name: 'Daisy UI', site: 'https://daisyui.com/' },
-      ],
-      timeline: 'May 2022 - June 2022',
-    },
-    {
-      title: 'REVEUX',
-      description:
-        'REVEUX is a luxury ecommerce platform for luxury beauty products. ',
-      urlSourceCode: 'https://github.com/PhymasSC/reveux',
-      image: '/img/Reveux_icon.png',
-      technologies: [
-        { name: 'Node.js', site: 'https://nodejs.org/en/' },
-        { name: 'Express.js', site: 'https://expressjs.com/' },
-        { name: 'MongoDB', site: 'https://www.mongodb.com/' },
-        { name: 'Stripe', site: 'https://stripe.com/' },
-        { name: 'JavaScript', site: 'https://www.javascript.com/' },
-        { name: 'Tailwind CSS', site: 'https://tailwindcss.com/' },
-      ],
-      timeline: 'December 2021 - January 2022',
-    },
-    {
-      title: 'Online Banking System',
-      description: 'This is an online banking system built with Java Swing.',
-      image: '/img/obs_logo.png',
-      technologies: [
-        {
-          name: 'Java SE',
-          site: 'https://www.oracle.com/java/technologies/javase-downloads.html',
-        },
-        {
-          name: 'Java Swing',
-          site: 'https://docs.oracle.com/javase/tutorial/uiswing/',
-        },
-        {
-          name: 'Google Mail API',
-          site: 'https://developers.google.com/gmail/api',
-        },
-        { name: 'Figma', site: 'https://www.figma.com/' },
-      ],
-      timeline: 'May 2021 - July 2021',
-    },
-    {
-      title: "Shoot 'Em Up",
-      description: "Shoot 'Em Up is a 2D game built with Pygame.",
-      urlSourceCode: 'https://github.com/PhymasSC/ShootEmUp',
-      image: '/img/Shoot_em_up_logo.png',
-      technologies: [
-        { name: 'Python', site: 'https://www.python.org/' },
-        { name: 'Pygame', site: 'https://www.pygame.org/' },
-      ],
-      timeline: 'December 2020 - January 2021',
-    },
-  ]
-
   return (
     <>
-      <Grid.Container
-        gap={3}
-        justify='center'
-        wrap='wrap'
-        css={{
-          '@media only screen and (max-width: 600px)': {
-            width: '100vc',
-            padding: '0',
-          },
-        }}
-      >
-        <Text h1>Projects.</Text>
-
-        {projects.map((project, index) => (
-          <Grid
-            xs={12}
-            key={index}
-            css={{
-              '@media only screen and (max-width: 600px)': {
-                width: '100%',
-              },
-            }}
-          >
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              urlSourceCode={project.urlSourceCode}
-              urlDeployedVersion={project.urlDeployedVersion}
-              image={project.image || ''}
-              technologies={project.technologies}
-              timeline={project.timeline}
-            />
-          </Grid>
-        ))}
-      </Grid.Container>
+      <div className="w-full mt-4 flex flex-col">
+        <div className="flex justify-center w-full mb-6">
+          <h2 className="text-3xl font-bold">Projects.</h2>
+        </div>
+        <div className="flex flex-col gap-6 w-full">
+          {projectList.map((project, index) => (
+            <div key={index} className="w-full">
+              <ProjectCard
+                name={project.name}
+                date={project.date}
+                description={project.description}
+                url={project.url}
+                source={project.source}
+                technology={project.technology}
+                icon={project.icon}
+                isWip={project.isWip}
+                wipDescription={project.wipDescription}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   )
 }

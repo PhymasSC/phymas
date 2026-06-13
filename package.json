@@ -10,27 +10,40 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
-    "@nextui-org/react": "^1.0.0-beta.12",
+    "@nextui-org/button": "^2.2.9",
+    "@nextui-org/card": "^2.2.9",
+    "@nextui-org/chip": "^2.2.6",
+    "@nextui-org/dropdown": "^2.3.9",
+    "@nextui-org/framer-transitions": "^2.0.15",
+    "@nextui-org/link": "^2.2.7",
+    "@nextui-org/navbar": "^2.2.8",
+    "@nextui-org/react": "^2.6.11",
+    "@nextui-org/system": "^2.4.6",
+    "@nextui-org/theme": "^2.4.5",
+    "@nextui-org/tooltip": "^2.2.7",
     "@types/node": "18.15.11",
-    "@types/react": "18.0.31",
-    "@types/react-dom": "18.0.11",
     "@vercel/analytics": "^1.0.0",
     "@vercel/og": "^0.5.4",
-    "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4",
-    "framer-motion": "^10.10.0",
-    "next": "13.2.4",
+    "eslint": "8.57.1",
+    "eslint-config-next": "16.2.9",
+    "framer-motion": "^12.40.0",
+    "next": "16.2.9",
     "next-themes": "^0.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "sitemap": "^7.1.1",
-    "styled-components": "^5.3.10",
-    "typescript": "5.0.3"
+    "styled-components": "^5.3.10"
   },
   "devDependencies": {
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=24.x"
   }
 }
