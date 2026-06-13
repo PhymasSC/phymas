@@ -1,21 +1,28 @@
-import { Text, Grid, Spacer } from '@nextui-org/react'
+'use client'
+
 import { motion, useTransform, useScroll } from 'framer-motion'
 import Image from 'next/image'
 import AnimatedText from './AnimatedText'
-
-const age =
-  new Date(Date.now() - new Date('2000-04-19').getTime()).getFullYear() - 1970
+import { useEffect, useState } from 'react'
 
 const About = () => {
   const { scrollY } = useScroll()
+  const [scale, setScale] = useState<any>(1.25)
+  const motionScale = useTransform(scrollY, [0, typeof window !== 'undefined' ? window.innerHeight : 1000], [1.25, 1])
 
-  const scale = useTransform(scrollY, [0, window.innerHeight], [1.25, 1])
+  useEffect(() => {
+    setScale(motionScale)
+  }, [motionScale])
+
+  const age =
+    new Date(Date.now() - new Date('2000-04-19').getTime()).getFullYear() - 1970
+
   return (
     <>
       <motion.div style={{ scale }}>
-        <Grid.Container wrap='wrap'>
-          <Grid justify='center' alignItems='center' direction='column' xs={12}>
-            <Text h1>About me.</Text>
+        <div className="flex flex-wrap justify-center items-center flex-col w-full">
+          <div className="flex justify-center items-center flex-col w-full">
+            <h1 className="text-4xl font-bold mb-4">About me.</h1>
             <Image
               src='/img/my_photo.webp'
               width={200}
@@ -23,22 +30,16 @@ const About = () => {
               alt='A photo of Lau Sheng Cher'
               style={{ borderRadius: '50%' }}
             />
-          </Grid>
-          <Spacer y={3} />
-          <Grid alignItems='center'>
+          </div>
+          <div className="h-12 w-full" />
+          <div className="flex items-center justify-center w-full">
             <AnimatedText
-              size='$2xl'
-              weight='medium'
-              css={{
-                textAlign: 'center',
-                textJustify: 'inter-word',
-                lineHeight: '1.5',
-              }}
+              className="text-2xl font-medium text-center leading-relaxed"
             >
               {`I'm a ${age} year old student from Malaysia. I'm currently studying computer science at the University of Malaysia Terengganu in Terengganu, Malaysia. I'm interested in web development and software development.`}
             </AnimatedText>
-          </Grid>
-        </Grid.Container>
+          </div>
+        </div>
       </motion.div>
     </>
   )

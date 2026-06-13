@@ -1,72 +1,33 @@
-import { Container, Row, Text, Spacer, Link } from '@nextui-org/react'
-import GitHub from './icons/Github'
+'use client'
+
+import { Link } from '@nextui-org/link'
+import Github from './icons/Github'
 import LinkedIn from './icons/LinkedIn'
-import { useTheme } from '@nextui-org/react'
-const year = new Date().getFullYear()
 
 const Footer = () => {
-  const { isDark } = useTheme()
   return (
-    <Container md>
-      <Row align='center' justify='center'>
-        <Text small>Find me on.</Text>
-      </Row>
-      <Row
-        align='center'
-        justify='center'
-        css={{ marginTop: '1rem', marginBottom: '1rem' }}
-      >
-        <Link href='https://github.com/PhymasSC' target='_blank'>
-          <GitHub width={30} height={30} color={isDark ? '#fff' : '#000'} />
-        </Link>
-        <Spacer x={1} />
-        <Link
-          href='https://www.linkedin.com/in/sheng-cher-lau-8a3730245/'
-          target='_blank'
-        >
-          <LinkedIn width={30} height={30} color={isDark ? '#fff' : '#000'} />
-        </Link>
-      </Row>
-      <Row justify='center'>
-        <Text
-          small
-          css={{
-            textAlign: 'center',
-            marginBottom: '1rem',
-          }}
-        >
+    <>
+      <div className="flex flex-col items-center justify-center w-full py-8 mt-12 border-t border-gray-200 dark:border-gray-800">
+        <p className="text-sm font-semibold mb-4">Find me on.</p>
+        <div className="flex gap-4 mb-6">
+          <Link isExternal href="https://github.com/PhymasSC">
+            <Github width={24} height={24} />
+          </Link>
+          <Link isExternal href="https://www.linkedin.com/in/sheng-cher-lau-a03525227/">
+            <LinkedIn width={24} height={24} />
+          </Link>
+        </div>
+        <p className="text-xs text-center text-gray-500">
           Website built with{' '}
-          <Link href='https://nextjs.org' target='_blank' isExternal>
-            Next.js
-          </Link>
-          ,{' '}
-          <Link href='https://nextui.org' target='_blank' isExternal>
-            NextUI
-          </Link>
-          ,{' '}
-          <Link
-            href='https://www.framer.com/motion/'
-            target='_blank'
-            isExternal
-          >
-            Framer Motion
-          </Link>{' '}
-          and{' '}
-          <Link
-            href='https://www.typescriptlang.org'
-            target='_blank'
-            isExternal
-          >
-            TypeScript
-          </Link>
-          . Powered by{' '}
-          <Link href='https://vercel.com' target='_blank' isExternal>
-            Vercel
-          </Link>
-          . &copy; Lau Sheng Cher {year}
-        </Text>
-      </Row>
-    </Container>
+          <Link isExternal href="https://nextjs.org/" className="text-xs">Next.js</Link>,{' '}
+          <Link isExternal href="https://nextui.org/" className="text-xs">NextUI</Link>,{' '}
+          <Link isExternal href="https://www.framer.com/motion/" className="text-xs">Framer Motion</Link> and{' '}
+          <Link isExternal href="https://www.typescriptlang.org/" className="text-xs">TypeScript</Link>.
+          Powered by <Link isExternal href="https://vercel.com/" className="text-xs">Vercel</Link>.
+          © Lau Sheng Cher 2026
+        </p>
+      </div>
+    </>
   )
 }
 

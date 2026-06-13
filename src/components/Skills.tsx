@@ -1,4 +1,7 @@
-import { Text, Grid, Card, theme } from '@nextui-org/react'
+'use client'
+
+import { Card, CardHeader, CardBody } from '@nextui-org/card'
+import { useTheme } from 'next-themes'
 import AnimatedCard from './AnimatedCard'
 import AnimatedChargingBar from './AnimatedChargingBar'
 import MongoDB from './icons/MongoDB'
@@ -64,7 +67,7 @@ const ProgrammingSkills = [
       <NextJs
         width={200}
         height={200}
-        color={theme.colors.accents9.toString()}
+        color="#888"
       />
     ),
     level: 7,
@@ -145,70 +148,64 @@ const ProgrammingSkills = [
 const Skills = () => {
   return (
     <>
-      <Grid.Container
-        gap={3}
-        css={{
-          marginTop: '1rem',
-        }}
-      >
-        <Grid xs={12} justify='center'>
-          <Text h2>Skills.</Text>
-        </Grid>
+      <div className="flex flex-col w-full mt-4 gap-6">
+        <div className="flex justify-center w-full">
+          <h2 className="text-3xl font-bold">Skills.</h2>
+        </div>
         {
           // Languages card
         }
-        <Grid xs={12}>
+        <div className="w-full">
           <AnimatedCard>
             <Card
-              variant='bordered'
-              css={{
-                padding: '$md',
+              className="p-4 border border-gray-200 dark:border-gray-800"
+              style={{
                 background:
-                  'linear-gradient(135deg, $accents0, rgba(145, 186, 236, 1))',
+                  'linear-gradient(135deg, transparent, rgba(145, 186, 236, 0.1))',
               }}
             >
-              <Card.Header>
-                <Text h2 size='$xl'>
-                  Languages
-                </Text>
-              </Card.Header>
-              <Card.Body>
-                {Object.keys(Languages).map((language, index) => {
-                  const level =
-                    (Languages[language].Listening +
-                      Languages[language].Speaking +
-                      (Languages[language]?.Reading || 0) +
-                      (Languages[language]?.Writing || 0)) /
-                    Object.keys(Languages[language]).length
-                  return (
-                    <Grid.Container
-                      key={index}
-                      justify='center'
-                      alignItems='center'
-                      css={{ marginBottom: '$md' }}
-                    >
-                      <Grid xs={5} alignItems='center'>
-                        <Text weight='semibold' css={{ lineHeight: '$xs' }}>
-                          {language.replaceAll('_', ' ')}
-                        </Text>
-                      </Grid>
-                      <Grid xs={6} alignItems='center'>
-                        <AnimatedChargingBar
-                          level={level}
-                          levelInText={`Overall: ${level}`}
-                        />
-                      </Grid>
-                    </Grid.Container>
-                  )
-                })}
-              </Card.Body>
+              <CardHeader>
+                <h2 className="text-2xl font-bold">Languages</h2>
+              </CardHeader>
+              <CardBody>
+                <div className="flex flex-col gap-4">
+                  {Object.keys(Languages).map((language, index) => {
+                    const level =
+                      (Languages[language].Listening +
+                        Languages[language].Speaking +
+                        (Languages[language]?.Reading || 0) +
+                        (Languages[language]?.Writing || 0)) /
+                      Object.keys(Languages[language]).length
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-row items-center w-full"
+                      >
+                        <div className="w-5/12 flex items-center">
+                          <span className="font-semibold text-sm">
+                            {language.replaceAll('_', ' ')}
+                          </span>
+                        </div>
+                        <div className="w-6/12 flex items-center">
+                          <AnimatedChargingBar
+                            level={level}
+                            levelInText={`Overall: ${level}`}
+                          />
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </CardBody>
             </Card>
           </AnimatedCard>
-        </Grid>
+        </div>
         {
           // Skills card
-          ProgrammingSkills.map((skill, index) => (
-            <Grid key={index} xs={12} md={4}>
+        }
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-6">
+          {ProgrammingSkills.map((skill, index) => (
+            <div key={index} className="w-full h-full">
               <SkillCard
                 name={skill.name}
                 description={skill.description}
@@ -216,10 +213,10 @@ const Skills = () => {
                 image={skill.image}
                 level={skill.level}
               />
-            </Grid>
-          ))
-        }
-      </Grid.Container>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   )
 }

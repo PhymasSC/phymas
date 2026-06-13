@@ -1,11 +1,13 @@
-import { Text, TextProps } from '@nextui-org/react'
+'use client'
+
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 
 type AnimatedTextProps = {
   children: string
   animateScale?: number
-} & TextProps
+  className?: string
+}
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const ref = useRef(null)
@@ -15,11 +17,18 @@ const AnimatedText = (props: AnimatedTextProps) => {
   })
   const [words, setWords] = useState<string[]>([])
   const [colorIndex, setColorIndex] = useState(0)
-  const scale = useTransform(
+
+  const [scale, setScale] = useState<any>(1.25)
+  const motionScale = useTransform(
     scrollYProgress,
-    [0, window.innerHeight],
+    [0, typeof window !== 'undefined' ? window.innerHeight : 1000],
     [props.animateScale || 1.25, 1],
   )
+
+  useEffect(() => {
+    setScale(motionScale)
+  }, [motionScale])
+
   const textPosition = useTransform(
     scrollYProgress,
     [0, 1 / 2],
@@ -31,25 +40,20 @@ const AnimatedText = (props: AnimatedTextProps) => {
     setWords(wordsArray)
   }, [props.children])
 
-  scrollY.on('change', () => {
-    const newIndex = Math.floor(textPosition.get())
-    if (newIndex !== colorIndex) {
-      setColorIndex(newIndex)
-    }
-  })
+  useEffect(() => {
+    return scrollY.on('change', () => {
+      const newIndex = Math.floor(textPosition.get())
+      if (newIndex !== colorIndex) {
+        setColorIndex(newIndex)
+      }
+    })
+  }, [scrollY, textPosition, colorIndex])
 
   return (
-    <motion.text ref={ref} style={{ scale }}>
-      <Text
-        {...props}
-        as='text'
+    <motion.div ref={ref} style={{ scale }}>
+      <p
+        className={`flex justify-center flex-wrap gap-1 ${props.className || ''}`}
         aria-label={props.children}
-        css={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          gap: '.2rem',
-        }}
       >
         {
           // separate each word into a span
@@ -64,8 +68,8 @@ const AnimatedText = (props: AnimatedTextProps) => {
             )
           })
         }
-      </Text>
-    </motion.text>
+      </p>
+    </motion.div>
   )
 }
 

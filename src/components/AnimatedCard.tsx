@@ -1,69 +1,27 @@
-import { motion, useMotionValue, useTransform, useAnimate } from 'framer-motion'
+'use client'
 
-interface AnimatedCardProps {
-  children: any
-  perspective?: number | string
-  rotateRate?: number
-}
+import { motion } from 'framer-motion'
+import React from 'react'
 
-const AnimatedCard = ({ children, ...props }: AnimatedCardProps) => {
-  const [scope, animate] = useAnimate()
-  const x = useMotionValue(200)
-  const y = useMotionValue(200)
-
-  const rotateX = useTransform(
-    y,
-    [0, 400],
-    [props.rotateRate || 2.5, (props.rotateRate && -props.rotateRate) || -2.5],
-  )
-  const rotateY = useTransform(
-    x,
-    [0, 400],
-    [(props.rotateRate && -props.rotateRate) || -2.5, props.rotateRate || 2.5],
-  )
-
-  function handleMouse(event: {
-    currentTarget: { getBoundingClientRect: () => any }
-    clientX: number
-    clientY: number
-  }) {
-    const rect = event.currentTarget.getBoundingClientRect()
-
-    x.set(event.clientX - rect.left)
-    y.set(event.clientY - rect.top)
-  }
-
-  function handleMouseLeave(event: any) {
-    animate(
-      scope.current,
-      { rotateX: 0, rotateY: 0 },
-      { duration: 0.5, stiffness: 100, damping: 500 },
-    )
-  }
-
+const AnimatedCard = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.div
-      style={{
-        display: 'flex',
-        placeItems: 'center',
-        placeContent: 'center',
-        width: '100%',
-        perspective: `${props.perspective || '50rem'}`,
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{
+        y: 0,
+        opacity: 1,
+        transition: {
+          type: 'spring',
+          bounce: 0.4,
+          duration: 0.8,
+        },
       }}
-      onMouseMove={handleMouse}
-      onMouseLeave={handleMouseLeave}
+      viewport={{ once: true, amount: 0.1 }}
+      className="h-full"
     >
-      <motion.div
-        ref={scope}
-        style={{
-          rotateX: rotateX,
-          rotateY: rotateY,
-          width: '100%',
-        }}
-      >
-        {children}
-      </motion.div>
+      {children}
     </motion.div>
   )
 }
+
 export default AnimatedCard

@@ -1,204 +1,85 @@
-import {
-  Badge,
-  Button,
-  Card,
-  Grid,
-  Text,
-  Link as NextUILink,
-} from '@nextui-org/react'
-import {
-  ArrowTopRightOnSquareIcon,
-  LockClosedIcon,
-} from '@heroicons/react/24/solid'
+'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
+import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card'
+import { Link } from '@nextui-org/link'
+import { Button } from '@nextui-org/button'
+import { Chip } from '@nextui-org/chip'
 import AnimatedCard from './AnimatedCard'
 
-interface Props {
-  title: string
+interface ProjectCardProps {
+  name: string
+  date: string
   description: string
-  urlSourceCode?: string
-  urlDeployedVersion?: string
-  image?: string | React.ReactNode
-  timeline: string
-  technologies: {
-    name: string
-    site: string
-  }[]
+  url?: string
+  source?: string
+  technology: string[]
+  icon: React.ReactNode
+  isWip?: boolean
+  wipDescription?: string
 }
 
-const ProjectCard = (props: Props) => {
-  const {
-    title,
-    description,
-    urlSourceCode,
-    urlDeployedVersion,
-    technologies,
-    timeline,
-    image,
-  } = props
-
+const ProjectCard = (props: ProjectCardProps) => {
   return (
-    <AnimatedCard perspective={'100rem'} rotateRate={1.5}>
-      {/* <Link href={`/project/${title}`} style={{ width: '100%' }}> */}
-      <Card variant='bordered' isPressable css={{ p: '$6', width: '100%' }}>
-        <Card.Header>
-          {image?.toLocaleString() === '[object Object]' ? (
-            image
-          ) : image?.toLocaleString()?.startsWith('emoji-') ? (
-            <Text
-              css={{
-                fontSize: '$6',
-                lineHeight: '$xs',
-                marginRight: '$4',
-              }}
-            >
-              {image?.toLocaleString().replace('emoji-', '')}
-            </Text>
-          ) : (
-            <Image
-              alt='nextui logo'
-              src={image?.toLocaleString() || ''}
-              width={50}
-              height={50}
-            />
-          )}
-          <Grid.Container
-            direction='column'
-            justify='flex-end'
-            css={{ pl: '$6' }}
-          >
-            <Grid xs={12}>
-              <Text
-                h1
-                size='$xl'
-                css={{
-                  lineHeight: '$xs',
-                }}
-              >
-                {title}
-              </Text>
-            </Grid>
-
-            <Grid xs={12}>
-              <Text
-                color='gray'
-                size='$xs'
-                weight='semibold'
-                css={{
-                  lineHeight: '$xs',
-                }}
-              >
-                {timeline}
-              </Text>
-            </Grid>
-          </Grid.Container>
-        </Card.Header>
-        <Card.Body css={{ py: '$2' }}>
-          <Text weight='bold'>
-            <Text weight='medium' size='$md'>
-              {description}
-            </Text>
-            <br />
-            Technology used:
-          </Text>
-          <Grid.Container>
-            <Grid>
-              {Object.values(technologies).map((technology, index) => (
-                <NextUILink
-                  key={index}
-                  href={technology.site}
-                  onClick={e => {
-                    e.stopPropagation()
-                  }}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  css={{
-                    '&:hover': {
-                      backgroundColor: '$primaryLightHover',
-                      borderRadius: '$lg',
-                    },
-                  }}
-                >
-                  <Badge
-                    color='primary'
-                    variant='flat'
-                    css={{ fontSize: '$xs' }}
-                  >
-                    {technology.name}
-                  </Badge>
-                </NextUILink>
-              ))}
-            </Grid>
-          </Grid.Container>
-        </Card.Body>
-        <Card.Footer>
-          <Grid.Container gap={1}>
-            <Grid>
-              {urlSourceCode ? (
-                <Link
-                  onClick={e => {
-                    e.stopPropagation()
-                  }}
-                  color='primary'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  href={urlSourceCode}
-                >
-                  <Button
-                    iconRight={
-                      <ArrowTopRightOnSquareIcon className='h-4 w-4' />
-                    }
-                    auto
-                    ghost
-                    rounded
-                  >
-                    Source code{' '}
-                  </Button>
-                </Link>
-              ) : (
-                <Button
-                  icon={<LockClosedIcon className='h-4 w-4' />}
-                  auto
-                  color='error'
-                  ghost
-                  rounded
-                  as='a'
-                  href={`mailto:phymaslau@gmail.com?subject=Request for source code for ${title}`}
-                >
-                  Request for source code
-                </Button>
-              )}
-            </Grid>
-            {urlDeployedVersion && (
-              <Grid>
-                <NextUILink
-                  onClick={e => {
-                    e.stopPropagation()
-                  }}
-                  color='primary'
-                  target='_blank'
-                  href={urlDeployedVersion}
-                >
-                  <Button
-                    iconRight={
-                      <ArrowTopRightOnSquareIcon className='h-4 w-4 ' />
-                    }
-                    auto
-                    ghost
-                    rounded
-                  >
-                    Visit deployed app
-                  </Button>
-                </NextUILink>
-              </Grid>
+    <>
+      <AnimatedCard>
+        <Card className="p-4 bg-transparent border border-gray-200 dark:border-gray-800 w-full mb-6">
+          <CardHeader className="flex flex-row gap-4">
+            {props.icon}
+            <div className="flex flex-col">
+              <h2 className="text-xl font-bold">{props.name}</h2>
+              <p className="text-sm text-gray-500">{props.date}</p>
+            </div>
+          </CardHeader>
+          <CardBody>
+            <p className="text-base">{props.description}</p>
+            {props.isWip && (
+              <div className="mt-4 flex flex-row items-center gap-2 text-pink-500">
+                <svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em">
+                  <path d="M18 10v-4c0-3.313-2.687-6-6-6s-6 2.687-6 6v4h-3v14h18v-14h-3zm-5 7.723v2.277h-2v-2.277c-.595-.347-1-.984-1-1.723 0-1.104.896-2 2-2s2 .896 2 2c0 .738-.404 1.376-1 1.723zm-5-7.723v-4c0-2.206 1.794-4 4-4 2.205 0 4 1.794 4 4v4h-8z" />
+                </svg>
+                <span className="text-sm">{props.wipDescription}</span>
+              </div>
             )}
-          </Grid.Container>
-        </Card.Footer>
-      </Card>
-      {/* </Link> */}
-    </AnimatedCard>
+            <div className="mt-4 flex flex-col gap-2">
+              <span className="text-sm font-semibold">Technology used:</span>
+              <div className="flex flex-wrap gap-2">
+                {props.technology.map((tech, index) => (
+                  <Chip key={index} size="sm" color="primary" variant="flat">
+                    {tech}
+                  </Chip>
+                ))}
+              </div>
+            </div>
+          </CardBody>
+          <CardFooter className="flex flex-wrap gap-2">
+            {props.source && (
+              <Button
+                as={Link}
+                isExternal
+                href={props.source}
+                variant="bordered"
+                color="primary"
+                radius="full"
+              >
+                Source code
+              </Button>
+            )}
+            {props.url && (
+              <Button
+                as={Link}
+                isExternal
+                href={props.url}
+                variant="bordered"
+                color="primary"
+                radius="full"
+              >
+                Visit deployed app
+              </Button>
+            )}
+          </CardFooter>
+        </Card>
+      </AnimatedCard>
+    </>
   )
 }
 
